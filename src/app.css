@@ -801,6 +801,34 @@ h1 {
     }
 }
 
+footer {
+    position: fixed;
+    bottom: 1px;
+    left: 0px;
+    border: 0px solid;
+    z-index: 1000;
+}
+
+.privacy_policy {
+    background-color: black;
+}
+
+.privacy_policy_content {
+    max-width: 200px;
+    padding-left: 5px;
+    padding-right: 5px;
+    text-align: justify;
+}
+
+.privacy_policy button {
+    font-size: 12px;
+    text-transform: lowercase;
+    background: #4e5458;
+    padding: 2px;
+    font-weight: unset;
+    border-radius: 0;
+}
+
 @keyframes slideinAndSpin {
     from {
         margin-left: 50%;

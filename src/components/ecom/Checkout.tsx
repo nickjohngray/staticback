@@ -23,7 +23,7 @@ interface CartSummaryProps {
     removeFromCart: (cartItem: ICartItem) => void;
 }
 
-class FullCartSummary extends React.Component<CartSummaryProps> {
+class Checkout extends React.Component<CartSummaryProps> {
     constructor(props: CartSummaryProps) {
         super(props);
     }
@@ -96,27 +96,40 @@ class FullCartSummary extends React.Component<CartSummaryProps> {
                 Your products will be delivered to the address specified in PayPal
                 <PayPalButton
                     style={{maxWidth: '200px'}}
+                    // @ts-ignore
                     disabled={this.props.cartTotal === 0}
                     createOrder={(object, actions) => this.makeOrder(object, actions)}
                     amount="0.01"
                     shippingPreference="NO_SHIPPING" // default is "GET_FROM_FILE"
                     // @ts-ignore
                     onSuccess={(details, data) => {
-                        window.alert(`Transaction completed by " + ${details.payer.name.given_name}`);
+                        window.alert(
+                            `Your order was processed SUCCESSFULLY! Your assume gear is on its way , thanks" + ${details.payer.name.given_name}`
+                        );
+                        this.goHome();
+                    }}
+                    onError={() => {
+                        window.alert(
+                            'An Error occurred, please contact the system administrator:  nickjohngray@gmail.com'
+                        );
                     }}
                     options={{
                         currency: CURRENCY_CODE,
-                        clientId: 'ATeqz4rbYuHJ0etl1xPmTT-pK_K-PNyJQfx7EW4yhSe5pWXjzQJlQnFMGQ2_Ut9188R7zvNCNdS04qzD',
-                        debug: 'true'
+                        clientId: 'AUbLuTwiTJ_3Xc7_TDMURV4Fig2d64px6CkASW5Qg5dFjDQOgwhqt3qZy-ufzho7JAnNBp7o-7tzuAga',
+                        debug: false
                     }}
                 />
             </div>
         </div>
     );
 
+    goHome = () => {
+        setTimeout(() => globalHistory.navigate('/'), 250);
+    };
+
     onEmptyCart = () => {
         this.props.emptyCart();
-        setTimeout(() => globalHistory.navigate('/'), 250);
+        this.goHome();
     };
 
     // @ts-ignore
@@ -170,4 +183,4 @@ export default connect(
         nextCartItemId: getNextCartItemId(state.cart.items)
     }),
     mapDispatchToProps
-)(FullCartSummary);
+)(Checkout);

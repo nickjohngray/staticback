@@ -6,8 +6,6 @@ import words from './../../images/words.png';
 import man from './../../images/man4.png';
 // @ts-ignore
 import ball from './../../images/ball2.png';
-import {ReactReduxContext} from 'react-redux';
-import {createPortal} from 'react-dom';
 
 export default () => {
     const [spinBall, setSpinBall] = useState(true);

@@ -4,10 +4,11 @@ import {ICartItem} from '../../typings';
 export enum CartActions {
     ADD_TO_CART = 'CART/ADD_TO_CART',
     REMOVE_FROM_CART = 'CART/REMOVE_FROM_CART',
-    EMPTY_CART = 'CART/EMPTY_CART',
+    EMPTY_CART = 'CART/EMPTY_CART'
 }
 
 export const addToCart = createAction(CartActions.ADD_TO_CART, (cartItem: ICartItem) => cartItem);
+
 export const removeFromCart = createAction(CartActions.REMOVE_FROM_CART, (cartItem: ICartItem) => cartItem);
 export const emptyCart = createAction(CartActions.EMPTY_CART, () => {});
 

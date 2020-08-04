@@ -2,15 +2,32 @@ import React from 'react';
 import Carousel, {Modal, ModalGateway} from 'react-images';
 import axios from 'axios';
 
-class FBGallery extends React.Component {
-    state = {
-        images: [],
-        isLightboxOpen: false,
-        selectedIndex: 0,
-        isLoading: true,
-        next: null,
-        previous: null
-    };
+interface Props {
+    FBAccessToken: string;
+}
+
+interface State {
+    images: string[];
+    isLightboxOpen: boolean;
+    selectedIndex: number;
+    isLoading: boolean;
+    next: {};
+    previous: {};
+}
+
+class FBGallery extends React.Component<Props, State> {
+    constructor(props: Props) {
+        super(props);
+
+        this.state = {
+            images: [],
+            isLightboxOpen: false,
+            selectedIndex: 0,
+            isLoading: true,
+            next: null,
+            previous: null
+        };
+    }
 
     toggleLightbox = (selectedIndex: number) => {
         this.setState(state => ({
@@ -19,23 +36,35 @@ class FBGallery extends React.Component {
         }));
     };
 
-    async componentDidMount() {
-        const key =
-            'EAADcbfCjxXkBAGnfw8ijJY7QXg2AZCGT0ZC14tSYplDK7DkV7su8M79A272EUKae0XQXrmV8xQ3QEfAy7aO1S1KNa6LJGqvKdviZCywW0sZA4gWpkBVaus04brZAYTrd30UZCGog3fhLTOlTn1RugOP7ZBgnVgs3RBVUgnAUF6EUV0MiaIA7ZA3pesxkQcItYjZBuz1zZBkGLPhQZDZD';
+    getFacebookPhotos = async () => {
+        try {
+            const galleryId = '435429489951715';
+            const key =
+                'EAADnfUDm9OcBAEPg8ieduhT9domSwpoi9eLFzKjI0g87EPerr7MklZALZBk81Ur0tUQGmfzGCLQZCcCTX7YJzfXeuvjQBaY8GN1ObMFAxkPOTIY9XU4DGlKeiZCRhgOVjs0rCYIU0CLq530XP3g3JfnekhXFq4h2TxRsQ4o7YpMifMT6wfLCUrOt9d0OH0ZAZCDJJQYWG0YgZDZD';
 
-        const galleryId = '435429489951715';
-
-        const a = axios.create({
-            baseURL:
+            const response = await axios.get(
                 'https://graph.facebook.com/v6.0/' +
-                galleryId +
-                '?fields=photos.limit(10)%7Bimages%7D&access_token=' +
-                key
-        });
-        //@ts-ignore
-        const response = await a.get();
-        this.loadImages(response.data.photos.data, null, response.data.photos.paging.next);
-    }
+                    galleryId +
+                    '?fields=photos.limit(10)%7Bimages%7D&access_token=' +
+                    '' +
+                    key
+            );
+            console.log(response);
+            return {photos: response.data.photos.data, paging: response.data.photos.paging};
+        } catch (e) {
+            throw e;
+        }
+    };
+
+    componentDidMount = async () => {
+        try {
+            const {photos, paging} = await this.getFacebookPhotos();
+            this.loadImages(photos, null, paging.next);
+        } catch (e) {
+            console.log(e);
+            alert('we had trouble loading images from facebook, the error was ' + e.message);
+        }
+    };
 
     loadImages(images, previous: string, next: string) {
         this.setState({
@@ -50,23 +79,15 @@ class FBGallery extends React.Component {
         });
     }
 
-    async next() {
-        const a = axios.create({
-            baseURL: this.state.next
-        });
-        //@ts-ignore
-        const r = await a.get();
-        this.loadImages(r.data.data, r.data.paging.previous, r.data.paging.next);
-    }
+    next = async () => {
+        const response = await axios.get(this.state.next);
+        this.loadImages(response.data.data, response.data.paging.previous, response.data.paging.next);
+    };
 
-    async previous() {
-        const a = axios.create({
-            baseURL: this.state.previous
-        });
-        //@ts-ignore
-        const r = await a.get();
-        this.loadImages(r.data.data, r.data.paging.previous, r.data.paging.next);
-    }
+    previous = async () => {
+        const response = await axios.get(this.state.previous);
+        this.loadImages(response.data.data, response.data.paging.previous, response.data.paging.next);
+    };
 
     render() {
         const {selectedIndex, isLightboxOpen, images, isLoading} = this.state;

@@ -3,6 +3,7 @@ export interface IPage {
     path: string;
     images?: IImage[];
     sections?: ISection[];
+    FBAccessToken?: string;
 }
 
 export interface ISection {
@@ -35,6 +36,7 @@ export interface IManifest {
     imagePath: string;
     pages: IPage[];
     products: IProduct[];
+    FBAccessToken: string;
 }
 
 export interface ICart {
@@ -45,11 +47,11 @@ export interface IHistory {
     URL: string;
 }
 
-/* a new id is made for each product added to the cart 
-  and a copy of the product definition 
+/* a new id is made for each product added to the cart
+  and a copy of the product definition
   if the product has a variations that the user has selected
   these will also be added
-  
+
 */
 export interface ICartItem {
     id: number;

@@ -1,9 +1,9 @@
 import React from 'react';
-import FullCartSummary from './../ecom/FullCartSummary';
+import Checkout from './../ecom/Checkout';
 
 export default () => (
     <div className="page center-it">
         <h1 className="center-text">Checkout</h1>
-        <FullCartSummary />
+        <Checkout />
     </div>
 );

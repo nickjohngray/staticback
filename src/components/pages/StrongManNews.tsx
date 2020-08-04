@@ -1,7 +1,10 @@
 import React from 'react';
+import SectionList from 'components/SectionList';
+import {getPage} from 'components/pages/pageUtil';
 
 export default () => (
-    <div className="page">
-        <h1 className="center-text">Strong Man News</h1>
+    <div className={'page center-it sponsors'}>
+        <h1>News</h1>
+        <SectionList sections={getPage('news').sections} />
     </div>
 );

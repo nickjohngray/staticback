@@ -5,10 +5,9 @@ import {IImage} from '../typings';
 // when combine strings in require webpack fails to get the image!!!!!!
 interface ImageLinkListkProps {
     images: IImage[];
-    imagePath: string;
 }
 
-const ImageLinkList: FC<ImageLinkListkProps> = ({images, imagePath}) => (
+const ImageLinkList: FC<ImageLinkListkProps> = ({images}) => (
     <>
         {images.map((image: IImage, key: number) => (
             <>

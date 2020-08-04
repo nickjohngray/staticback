@@ -1,4 +1,5 @@
 {
+    "reopName": "staticback",
     "imagePath": "./../images/",
     "appName": "Strength Pit Otara",
     "pages": [
@@ -21,20 +22,7 @@
             "name": "Gallery",
             "path": "image-gallery",
             "template": "src/components/pages/ImageGallery",
-            "images": [
-                {
-                    "src": "ttt_logotrans.fw_.png"
-                },
-                {
-                    "src": "benjimimgoldlogo.fw_.png"
-                },
-                {
-                    "src": "aucklandhealthperf.fw_.png"
-                },
-                {
-                    "src": "jacksmeat.fw_.png"
-                }
-            ]
+            "FBAccessToken" : "EAADnfUDm9OcBAKIZAPjMZB9bb1JaQ35bsPOHkg1VjFcqGF3sNOMZCOWB5YJT8qMvvG3SXOdMcMZCZC8ZBm28AUQaYYhimDlg8Oe6ZAYwxXA5gzEpoDdfJPAlPBbJypNxvcoUsDTab5VYq4wjqwaR2ziL0c1vaDn2GyQRuH7PPEFaqa0oD6P3fA9yQMTFoiLsd2gSK9RTSE4FgZDZD"
         },
         {
             "name": "Videos",
@@ -701,7 +689,7 @@
                                 "NZ Strongman Series Nationals Champion 1st place"
                             ]
                         },
-                       
+
                         {
                             "image": {
                                 "src": "skyler_hawk.png"
@@ -879,15 +867,15 @@
                                 "Arnold Competitor",
                                 "Auckland Highland Games u65kg Champion"
                             ]
-                        }, 
+                        },
                         {
                             "image": {
                                 "src": "vendy_vespalcova.png"
                             },
                             "header": "Vendy Vespalcova"
-                            
+
                         }
-                       
+
                     ]
                 },
                 {
@@ -1051,6 +1039,22 @@
             ]
         },
         {
+            "name": "News",
+            "path": "news",
+            "template": "src/components/pages/StrongManNews",
+            "sections": [
+                {
+                    "link": "https://facebook.com/events/s/new-zealand-strongman-series-n/250416402951612",
+                    "header": "New Zealand Strongman Series Nationals 2020"
+
+                }, {
+                    "link": "https://facebook.com/events/s/aucklands-strongest-man-woman-/2859368420843627/",
+                    "header": "Auckland's Strongest Man & Woman 2020"
+
+                }]
+
+        },
+        {
             "name": "Sponsors",
             "path": "sponsors",
             "template": "src/components/pages/Sponsors",
@@ -1063,7 +1067,7 @@
                     "src": "strenth_gear.jpg",
                     "url": "https://strengthgear.co.nz"
                 },
-                
+
                 {
                     "src": "tumunu_sunglasses.fw_.png",
                     "url": "https://www.tumunusunglasses.co.nz"
@@ -1088,11 +1092,7 @@
                 }
             ]
         },
-        {
-            "name": "News",
-            "path": "strong-man-news",
-            "template": "src/components/pages/StrongManNews"
-        },
+
         {
             "name": "Checkout",
             "path": "checkout",
@@ -1101,6 +1101,14 @@
     ],
     "products": [
         {
+            "type": "dummy",
+            "title": "dummy prod",
+            "description": "Adummy",
+            "price": 1,
+            "image": "strength_pit_black_training_tshirt.jpg",
+            "variations": []
+
+        },  {
             "type": "TSHIRT",
             "title": "Training Tee",
             "description": "AS Colors - Staple",
