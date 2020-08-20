@@ -1,40 +1,47 @@
 {
     "reopName": "staticback",
     "imagePath": "./../images/",
-    "appName": "Strength Pit Otara",
+    "appName": "StaticBack",
     "pages": [
         {
+            "id": 0,
             "name": "Home",
             "path": "/",
             "template": "src/components/pages/Home"
         },
         {
+            "id": 1,
             "name": "Merchandise",
             "template": "src/components/pages/Shop",
             "path": "merchandise"
         },
         {
+            "id": 2,
             "name": "About",
             "path": "about",
             "template": "src/components/pages/About"
         },
         {
+            "id": 3,
             "name": "Gallery",
             "path": "image-gallery",
             "template": "src/components/pages/ImageGallery",
             "FBAccessToken" : "EAADnfUDm9OcBAKIZAPjMZB9bb1JaQ35bsPOHkg1VjFcqGF3sNOMZCOWB5YJT8qMvvG3SXOdMcMZCZC8ZBm28AUQaYYhimDlg8Oe6ZAYwxXA5gzEpoDdfJPAlPBbJypNxvcoUsDTab5VYq4wjqwaR2ziL0c1vaDn2GyQRuH7PPEFaqa0oD6P3fA9yQMTFoiLsd2gSK9RTSE4FgZDZD"
         },
         {
+            "id": 4,
             "name": "Videos",
             "path": "videos",
             "template": "src/components/pages/Videos"
         },
         {
+            "id": 5,
             "name": "Page Nout Found",
             "path": "404",
             "template": "src/components/pages/404"
         },
         {
+            "id": 6,
             "name": "Athletes",
             "path": "athletes",
             "template": "src/components/pages/Athletes",
@@ -1039,6 +1046,7 @@
             ]
         },
         {
+            "id": 7,
             "name": "News",
             "path": "news",
             "template": "src/components/pages/StrongManNews",
@@ -1055,6 +1063,7 @@
 
         },
         {
+            "id": 8,
             "name": "Sponsors",
             "path": "sponsors",
             "template": "src/components/pages/Sponsors",
@@ -1094,6 +1103,7 @@
         },
 
         {
+            "id": 9,
             "name": "Checkout",
             "path": "checkout",
             "template": "src/components/pages/Checkout"
