@@ -10,6 +10,7 @@ export enum CartActions {
 export const addToCart = createAction(CartActions.ADD_TO_CART, (cartItem: ICartItem) => cartItem);
 
 export const removeFromCart = createAction(CartActions.REMOVE_FROM_CART, (cartItem: ICartItem) => cartItem);
+// tslint:disable-next-line:no-empty
 export const emptyCart = createAction(CartActions.EMPTY_CART, () => {});
 
 export type emptyCartAction = ReturnType<typeof emptyCart>;

@@ -2,14 +2,14 @@ import {Link} from '@reach/router';
 import React, {FC} from 'react';
 import {connect} from 'react-redux';
 import {useSiteData} from 'react-static';
-import {IManifest, IPage, IState} from '../../typings';
+import {IManifest, IPage, IStore} from '../../typings';
 
-interface MenuItemProps {
+interface IProps {
     URL: string;
     cartCount: number;
 }
 
-const MenuItems: FC<MenuItemProps> = ({URL, cartCount}) => {
+const MenuItems: FC<IProps> = ({URL, cartCount}) => {
     const manifest: IManifest = useSiteData();
 
     return (
@@ -41,7 +41,7 @@ const fixURL = (url: string) => {
     }
 };
 
-export default connect((state: IState) => ({
+export default connect((state: IStore) => ({
     URL: state.history.URL,
     cartCount: state.cart.items.length
 }))(MenuItems);

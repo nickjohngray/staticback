@@ -1,46 +1,306 @@
 {
     "reopName": "staticback",
     "imagePath": "./../images/",
-    "appName": "StaticBack",
+    "appName": "Static Back",
+    "prodUrl": "https://staticback.netlify.app",
     "pages": [
         {
             "id": 0,
             "name": "Home",
             "path": "/",
-            "template": "src/components/pages/Home"
+            "template": "src/components/pages/Home",
+            "templateContent": "import React, {useEffect, useState} from 'react';\n// @ts-ignore\nimport words from './../../images/words.png';\n// logo-words.png, logo-man\n// @ts-ignore\nimport man from './../../images/man4.png';\n// @ts-ignore\nimport ball from './../../images/ball2.png';\n\nexport default () => {\n    const [spinBall, setSpinBall] = useState(true);\n    const [dropBall, setDropBall] = useState(true);\n\n    useEffect(() => {\n        toggleSpin();\n        setTimeout(() => {\n            setDropBall(false);\n        }, 2000);\n    });\n\n    const toggleSpin = () => {\n        window.setTimeout(() => {\n            setSpinBall(!spinBall);\n            toggleSpin();\n        }, 20000);\n    };\n\n    const getBallClassName = () => {\n        let cn = 'center logo-ball';\n        cn += spinBall ? ' logo-spin-ball' : '';\n        cn += dropBall ? ' logo-drop-ball' : '';\n        return cn;\n    };\n    return (\n        <div className=\"page center-it\">\n            <p></p>\n            <img className={spinBall ? 'center logo-words' : 'center logo-words logo-spin-words'} src={words} />\n            <img id=\"logoMan\" className=\"center logo-man\" src={man} />\n            <img id=\"logoBall\" className={getBallClassName()} src={ball} />\n        </div>\n    );\n};\n"
         },
         {
             "id": 1,
             "name": "Merchandise",
             "template": "src/components/pages/Shop",
-            "path": "merchandise"
+            "path": "merchandise",
+            "editor": "productEditor",
+            "templateContent": "import React from 'react';\nimport Shop from './../ecom/Shop';\nimport {getProducts} from 'components/pages/manifestUtil';\n\nexport default () => (\n    <div className=\"page\">\n        <h1 className=\"center-text\">Merchandise</h1>\n        <Shop products={getProducts()} />\n    </div>\n);\n"
         },
         {
             "id": 2,
             "name": "About",
             "path": "about",
-            "template": "src/components/pages/About"
+            "template": "src/components/pages/IncredibleTemplate",
+            "editor": "incredibleEditor",
+            "incredibleData": {
+                "type": "row",
+                "children": [
+                    {
+                        "type": "richText",
+                        "children": [
+                            {
+                                "type": "heading-one",
+                                "children": [
+                                    {
+                                        "text": "About us"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "paragraph",
+                                "children": [
+                                    {
+                                        "text": "We are a Strongman Gym and cater to both female and male athletesWe offer classes in the evening from 7.30pm to 9.30pm Monday to Friday, coached by Owner and Director of Strength Pit. Online coaching and online programming."
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "heading-one",
+                                "children": [
+                                    {
+                                        "text": "History"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "paragraph",
+                                "children": [
+                                    {
+                                        "text": "Strength Pit Otara was born out of the passion to facilitate a safe place, tailored for Maori and Pasifika to be themselves, and grow their natural strength. Coach Afaese Paea, born and bred in Otara, always had a interest in strength sports, powerlifting, martial arts and Rugby."
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "paragraph",
+                                "children": [
+                                    {
+                                        "text": "While browsing around the big boys toys one year he stumbled across a Strongman event at the Easter Show back in 2005 - 2006 and searched how to get involved in that sport."
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "paragraph",
+                                "children": [
+                                    {
+                                        "text": "And the rest is history, his first Novice competition he won without any training and then decided to pursue the NZ Strongman Arena."
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "paragraph",
+                                "children": [
+                                    {
+                                        "text": "Due to the events being few and far between it was difficult to train without the apparatus’s so we decided to offer strength training to a local Box Empire Training Box based in Otara back in 2014 and the word got around and some 10 poly boys started showing up after the Box had closed."
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "paragraph",
+                                "children": [
+                                    {
+                                        "text": "Thanks to a really good mate also born and bred in Otara Lama Saga loaned us his space until we out grew it."
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "paragraph",
+                                "children": [
+                                    {
+                                        "text": "We set up officially in June 2015, and operate online coaching, strength and conditioning workshops all over the country and have Athletes competing in Strongman both in NZ and Australia."
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "heading-two",
+                                "children": [
+                                    {
+                                        "text": "Contact Us"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "type": "row",
+                        "children": [
+                            {
+                                "type": "linkWithIcon",
+                                "href": "mailto:strengthpitotara@gmail.com",
+                                "icon": "faGoogle",
+                                "size": "1x",
+                                "text": "StrengthPitOtara@gmail.com",
+                                "target": "_new"
+                            },
+                            {
+                                "type": "linkWithIcon",
+                                "href": "https://www.facebook.com/StrengthPitOtaraLimited",
+                                "icon": "faFacebook",
+                                "size": "1x",
+                                "text": "StrengthPitOtaraLimited",
+                                "placeholder": "Facebook Strength Pit Otara Limited",
+                                "target": "_new"
+                            },
+                            {
+                                "type": "linkWithIcon",
+                                "href": "https://www.instagram.com/nzstrengthcoach/",
+                                "icon": "faInstagram",
+                                "size": "1x",
+                                "text": "NZStrengthCoach",
+                                "target": "_new"
+                            },
+                            {
+                                "type": "linkWithIcon",
+                                "href": "tel:0220122821",
+                                "icon": "faPhone",
+                                "size": "1x",
+                                "text": "(022) 012 2821",
+                                "target": "_new"
+                            }
+                        ]
+                    },
+                    {
+                        "type": "richText",
+                        "children": [
+                            {
+                                "type": "heading-two",
+                                "children": [
+                                    {
+                                        "text": "Athletes coached by NZ strength coach"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "type": "richText",
+                        "children": [
+                            {
+                                "type": "heading-two",
+                                "children": [
+                                    {
+                                        "type": "a",
+                                        "title": "download",
+                                        "href": "./../src/assets/strength_pit_otara_strongman_athletes_board_2020.pdf",
+                                        "children": [
+                                            {
+                                                "text": "Strong Man Athletes Board 2020"
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "type": "pdf",
+                        "file": "./../src/assets/strength_pit_otara_strongman_athletes_board_2020.pdf",
+                        "children": [
+                            {
+                                "text": ""
+                            }
+                        ]
+                    },
+                    {
+                        "type": "richText",
+                        "children": [
+                            {
+                                "type": "heading-two",
+                                "children": [
+                                    {
+                                        "type": "a",
+                                        "title": "download",
+                                        "href": "./../src/assets/strength_pit_otara_strongwoman_athletes_board_2020.pdf",
+                                        "children": [
+                                            {
+                                                "text": "Strong Woman Athletes Board 2020"
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "type": "pdf",
+                        "file": "./../src/assets/strength_pit_otara_strongwoman_athletes_board_2020.pdf",
+                        "children": [
+                            {
+                                "text": ""
+                            }
+                        ]
+                    }
+                ]
+            },
+            "templateContent": "import React from 'react';\nimport Incredible from 'components/IncredibileEditor.tsx/Incredible';\nimport {IIncredibleItem, IPage} from '../../typings';\nimport {useRouteData} from 'react-static';\n\nconst IncredibleTemplate = () => {\n    const data = useIncredible();\n\n    return (\n        <div className={'page center-it '}>\n            <Incredible data={data} />\n        </div>\n    );\n};\n\nconst useIncredible = (): IIncredibleItem => {\n    const routeData = useRouteData();\n    const page: IPage = routeData.page;\n\n    if (!page) {\n        throw 'No Page data found, can\\'t build Incredible template';\n    }\n    const data: IIncredibleItem = page.incredibleData;\n\n    if (!data) {\n        throw 'No Incredible data found for page ' + page.name;\n    }\n    return data;\n};\n\nexport default IncredibleTemplate;\n"
         },
         {
             "id": 3,
             "name": "Gallery",
             "path": "image-gallery",
             "template": "src/components/pages/ImageGallery",
-            "FBAccessToken" : "EAADnfUDm9OcBAKIZAPjMZB9bb1JaQ35bsPOHkg1VjFcqGF3sNOMZCOWB5YJT8qMvvG3SXOdMcMZCZC8ZBm28AUQaYYhimDlg8Oe6ZAYwxXA5gzEpoDdfJPAlPBbJypNxvcoUsDTab5VYq4wjqwaR2ziL0c1vaDn2GyQRuH7PPEFaqa0oD6P3fA9yQMTFoiLsd2gSK9RTSE4FgZDZD"
+            "FBAccessToken": "EAADnfUDm9OcBAJZAYHm6by382CMCPZCsU9vjfh2l0HXHcALzfyBpBcf1YddbZAUSq1iNMQeVukEmwb82E7d6IggMcog2iTTWFSWuRUygQPwtCCGrKyzXNhCuCeEoc5FXJE4n5x6BtGm1am617am5hMEPlHjGNfZAC3dAW0H26rFkrbhp3pCxF882OdAAf6xBP8KEn8IEUAZDZD",
+            "templateContent": "import React from 'react';\nimport FBGallery from '../FBGallery';\nimport {getPage} from 'components/pages/manifestUtil';\n\nexport default () => (\n    <div className=\"page\">\n        <h1 className=\"center-text\">Image Gallery</h1>\n        <FBGallery FBAccessToken={getPage('image-gallery').FBAccessToken} />\n    </div>\n);\n"
         },
         {
             "id": 4,
             "name": "Videos",
             "path": "videos",
-            "template": "src/components/pages/Videos"
+            "template": "src/components/pages/Videos",
+            "templateContent": "import React from 'react';\nimport YoutubePlayer from './../youtube/YoutubePlayer';\n\nexport default () => (\n    <div className=\"page\">\n        <h1 className=\"center-text\">Videos</h1>\n        <YoutubePlayer />\n    </div>\n);\n"
         },
         {
             "id": 5,
-            "name": "Page Nout Found",
+            "name": "Page Not Found",
             "path": "404",
-            "template": "src/components/pages/404"
+            "template": "src/components/pages/404",
+            "isDeletable": false,
+            "isFixedURLPath": true,
+            "templateContent": "// Dont remove this file React Static needs to be called 404\nimport React from 'react';\nimport Incredible from 'components/IncredibileEditor.tsx/Incredible';\nimport {getPage} from 'components/pages/manifestUtil';\nexport default () => {\n    return (\n        <div className={'page center-it '}>\n            <Incredible data={getPage('404').incredibleData} />\n        </div>\n    );\n};\n",
+            "editor": "incredibleEditor",
+            "incredibleData": {
+                "type": "row",
+                "children": [
+                    {
+                        "type": "richText",
+                        "children": [
+                            {
+                                "type": "heading-one",
+                                "children": [
+                                    {
+                                        "text": "That Page does not exist"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "paragraph",
+                                "children": [
+                                    {
+                                        "text": "Sorry Bro!"
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
         },
         {
+            "editor": "sectionEditor",
+            "defaultFieldOrder": [
+                {
+                    "name": "header",
+                    "order": 0
+                },
+                {
+                    "name": "image",
+                    "order": 1
+                },
+                {
+                    "name": "link",
+                    "order": 2
+                },
+                {
+                    "name": "list",
+                    "order": 3
+                },
+                {
+                    "name": "body",
+                    "order": 4
+                }
+            ],
             "id": 6,
             "name": "Athletes",
             "path": "athletes",
@@ -51,6 +311,28 @@
                         "type": "tab",
                         "open": true
                     },
+                    "defaultFieldOrder": [
+                        {
+                            "name": "header",
+                            "order": 0
+                        },
+                        {
+                            "name": "image",
+                            "order": 1
+                        },
+                        {
+                            "name": "link",
+                            "order": 2
+                        },
+                        {
+                            "name": "list",
+                            "order": 3
+                        },
+                        {
+                            "name": "body",
+                            "order": 4
+                        }
+                    ],
                     "header": "Pro Athletes",
                     "sections": [
                         {
@@ -58,6 +340,28 @@
                             "image": {
                                 "src": "eddie.jpeg"
                             },
+                            "defaultFieldOrder": [
+                                {
+                                    "name": "header",
+                                    "order": 0
+                                },
+                                {
+                                    "name": "image",
+                                    "order": 1
+                                },
+                                {
+                                    "name": "link",
+                                    "order": 2
+                                },
+                                {
+                                    "name": "list",
+                                    "order": 3
+                                },
+                                {
+                                    "name": "body",
+                                    "order": 4
+                                }
+                            ],
                             "header": "Eddie Williams",
                             "list": [
                                 "2 x Australia Strongest Man 18,19",
@@ -69,6 +373,24 @@
                             "image": {
                                 "src": "trey_mitchell.png"
                             },
+                            "defaultFieldOrder": [
+                                {
+                                    "name": "image",
+                                    "order": 0
+                                },
+                                {
+                                    "name": "link",
+                                    "order": 1
+                                },
+                                {
+                                    "name": "list",
+                                    "order": 2
+                                },
+                                {
+                                    "name": "body",
+                                    "order": 3
+                                }
+                            ],
                             "header": "Trey Mitchell",
                             "list": [
                                 "1 x America Strongest Man 2019",
@@ -80,6 +402,28 @@
                             "image": {
                                 "src": "kate_mitchell.png"
                             },
+                            "defaultFieldOrder": [
+                                {
+                                    "name": "header",
+                                    "order": 0
+                                },
+                                {
+                                    "name": "image",
+                                    "order": 1
+                                },
+                                {
+                                    "name": "link",
+                                    "order": 2
+                                },
+                                {
+                                    "name": "list",
+                                    "order": 3
+                                },
+                                {
+                                    "name": "body",
+                                    "order": 4
+                                }
+                            ],
                             "header": "Kate Mitchell",
                             "list": [
                                 ""
@@ -89,6 +433,28 @@
                             "image": {
                                 "src": "shayna_wirihana.png"
                             },
+                            "defaultFieldOrder": [
+                                {
+                                    "name": "header",
+                                    "order": 0
+                                },
+                                {
+                                    "name": "image",
+                                    "order": 1
+                                },
+                                {
+                                    "name": "link",
+                                    "order": 2
+                                },
+                                {
+                                    "name": "list",
+                                    "order": 3
+                                },
+                                {
+                                    "name": "body",
+                                    "order": 4
+                                }
+                            ],
                             "header": "Shayna Wirihana",
                             "list": [
                                 ""
@@ -100,12 +466,56 @@
                     "opener": {
                         "type": "tab"
                     },
+                    "defaultFieldOrder": [
+                        {
+                            "name": "header",
+                            "order": 0
+                        },
+                        {
+                            "name": "image",
+                            "order": 1
+                        },
+                        {
+                            "name": "link",
+                            "order": 2
+                        },
+                        {
+                            "name": "list",
+                            "order": 3
+                        },
+                        {
+                            "name": "body",
+                            "order": 4
+                        }
+                    ],
                     "header": "Celebrities",
                     "sections": [
                         {
                             "image": {
                                 "src": "david_tua.png"
                             },
+                            "defaultFieldOrder": [
+                                {
+                                    "name": "header",
+                                    "order": 0
+                                },
+                                {
+                                    "name": "image",
+                                    "order": 1
+                                },
+                                {
+                                    "name": "link",
+                                    "order": 2
+                                },
+                                {
+                                    "name": "list",
+                                    "order": 3
+                                },
+                                {
+                                    "name": "body",
+                                    "order": 4
+                                }
+                            ],
                             "header": "David Tua",
                             "list": [
                                 ""
@@ -115,6 +525,28 @@
                             "image": {
                                 "src": "dave_latele.png"
                             },
+                            "defaultFieldOrder": [
+                                {
+                                    "name": "header",
+                                    "order": 0
+                                },
+                                {
+                                    "name": "image",
+                                    "order": 1
+                                },
+                                {
+                                    "name": "link",
+                                    "order": 2
+                                },
+                                {
+                                    "name": "list",
+                                    "order": 3
+                                },
+                                {
+                                    "name": "body",
+                                    "order": 4
+                                }
+                            ],
                             "header": "Dave Latele",
                             "list": [
                                 ""
@@ -126,18 +558,84 @@
                     "opener": {
                         "type": "tab"
                     },
+                    "defaultFieldOrder": [
+                        {
+                            "name": "header",
+                            "order": 0
+                        },
+                        {
+                            "name": "image",
+                            "order": 1
+                        },
+                        {
+                            "name": "link",
+                            "order": 2
+                        },
+                        {
+                            "name": "list",
+                            "order": 3
+                        },
+                        {
+                            "name": "body",
+                            "order": 4
+                        }
+                    ],
                     "header": "VIP Memebers",
                     "sections": [
                         {
                             "image": {
                                 "src": "george_grieg.png"
                             },
+                            "defaultFieldOrder": [
+                                {
+                                    "name": "header",
+                                    "order": 0
+                                },
+                                {
+                                    "name": "image",
+                                    "order": 1
+                                },
+                                {
+                                    "name": "link",
+                                    "order": 2
+                                },
+                                {
+                                    "name": "list",
+                                    "order": 3
+                                },
+                                {
+                                    "name": "body",
+                                    "order": 4
+                                }
+                            ],
                             "header": "George Grieg"
                         },
                         {
                             "image": {
                                 "src": "kenneth_auelua.png"
                             },
+                            "defaultFieldOrder": [
+                                {
+                                    "name": "header",
+                                    "order": 0
+                                },
+                                {
+                                    "name": "image",
+                                    "order": 1
+                                },
+                                {
+                                    "name": "link",
+                                    "order": 2
+                                },
+                                {
+                                    "name": "list",
+                                    "order": 3
+                                },
+                                {
+                                    "name": "body",
+                                    "order": 4
+                                }
+                            ],
                             "header": "Kenneth Auelua"
                         }
                     ]
@@ -146,48 +644,224 @@
                     "opener": {
                         "type": "tab"
                     },
+                    "defaultFieldOrder": [
+                        {
+                            "name": "header",
+                            "order": 0
+                        },
+                        {
+                            "name": "image",
+                            "order": 1
+                        },
+                        {
+                            "name": "link",
+                            "order": 2
+                        },
+                        {
+                            "name": "list",
+                            "order": 3
+                        },
+                        {
+                            "name": "body",
+                            "order": 4
+                        }
+                    ],
                     "header": "Trained at Strength Pit",
                     "sections": [
                         {
                             "image": {
                                 "src": "pauly_tahuri.png"
                             },
+                            "defaultFieldOrder": [
+                                {
+                                    "name": "header",
+                                    "order": 0
+                                },
+                                {
+                                    "name": "image",
+                                    "order": 1
+                                },
+                                {
+                                    "name": "link",
+                                    "order": 2
+                                },
+                                {
+                                    "name": "list",
+                                    "order": 3
+                                },
+                                {
+                                    "name": "body",
+                                    "order": 4
+                                }
+                            ],
                             "header": "Pauly Tahuri"
                         },
                         {
                             "image": {
                                 "src": "man.png"
                             },
+                            "defaultFieldOrder": [
+                                {
+                                    "name": "header",
+                                    "order": 0
+                                },
+                                {
+                                    "name": "image",
+                                    "order": 1
+                                },
+                                {
+                                    "name": "link",
+                                    "order": 2
+                                },
+                                {
+                                    "name": "list",
+                                    "order": 3
+                                },
+                                {
+                                    "name": "body",
+                                    "order": 4
+                                }
+                            ],
                             "header": "Mike ( NEED IMAGE )"
                         },
                         {
                             "image": {
                                 "src": "selena_hotere.png"
                             },
+                            "defaultFieldOrder": [
+                                {
+                                    "name": "header",
+                                    "order": 0
+                                },
+                                {
+                                    "name": "image",
+                                    "order": 1
+                                },
+                                {
+                                    "name": "link",
+                                    "order": 2
+                                },
+                                {
+                                    "name": "list",
+                                    "order": 3
+                                },
+                                {
+                                    "name": "body",
+                                    "order": 4
+                                }
+                            ],
                             "header": "Selena Hotere"
                         },
                         {
                             "image": {
                                 "src": "awhina_macleod.png"
                             },
+                            "defaultFieldOrder": [
+                                {
+                                    "name": "header",
+                                    "order": 0
+                                },
+                                {
+                                    "name": "image",
+                                    "order": 1
+                                },
+                                {
+                                    "name": "link",
+                                    "order": 2
+                                },
+                                {
+                                    "name": "list",
+                                    "order": 3
+                                },
+                                {
+                                    "name": "body",
+                                    "order": 4
+                                }
+                            ],
                             "header": "Awhina Macleod"
                         },
                         {
                             "image": {
                                 "src": "mona_nansen.png"
                             },
+                            "defaultFieldOrder": [
+                                {
+                                    "name": "header",
+                                    "order": 0
+                                },
+                                {
+                                    "name": "image",
+                                    "order": 1
+                                },
+                                {
+                                    "name": "link",
+                                    "order": 2
+                                },
+                                {
+                                    "name": "list",
+                                    "order": 3
+                                },
+                                {
+                                    "name": "body",
+                                    "order": 4
+                                }
+                            ],
                             "header": "Mona Nansen"
                         },
                         {
                             "image": {
                                 "src": "rangimaria_hetaraka.png"
                             },
+                            "defaultFieldOrder": [
+                                {
+                                    "name": "header",
+                                    "order": 0
+                                },
+                                {
+                                    "name": "image",
+                                    "order": 1
+                                },
+                                {
+                                    "name": "link",
+                                    "order": 2
+                                },
+                                {
+                                    "name": "list",
+                                    "order": 3
+                                },
+                                {
+                                    "name": "body",
+                                    "order": 4
+                                }
+                            ],
                             "header": "Rangimaria Hetaraka"
                         },
                         {
                             "image": {
                                 "src": "alina_manu.png"
                             },
+                            "defaultFieldOrder": [
+                                {
+                                    "name": "header",
+                                    "order": 0
+                                },
+                                {
+                                    "name": "image",
+                                    "order": 1
+                                },
+                                {
+                                    "name": "link",
+                                    "order": 2
+                                },
+                                {
+                                    "name": "list",
+                                    "order": 3
+                                },
+                                {
+                                    "name": "body",
+                                    "order": 4
+                                }
+                            ],
                             "header": "Alina Manu"
                         }
                     ]
@@ -196,42 +870,196 @@
                     "opener": {
                         "type": "tab"
                     },
+                    "defaultFieldOrder": [
+                        {
+                            "name": "header",
+                            "order": 0
+                        },
+                        {
+                            "name": "image",
+                            "order": 1
+                        },
+                        {
+                            "name": "link",
+                            "order": 2
+                        },
+                        {
+                            "name": "list",
+                            "order": 3
+                        },
+                        {
+                            "name": "body",
+                            "order": 4
+                        }
+                    ],
                     "header": "Strong Kids",
                     "sections": [
                         {
                             "image": {
                                 "src": "giavann_maxwell.png"
                             },
+                            "defaultFieldOrder": [
+                                {
+                                    "name": "header",
+                                    "order": 0
+                                },
+                                {
+                                    "name": "image",
+                                    "order": 1
+                                },
+                                {
+                                    "name": "link",
+                                    "order": 2
+                                },
+                                {
+                                    "name": "list",
+                                    "order": 3
+                                },
+                                {
+                                    "name": "body",
+                                    "order": 4
+                                }
+                            ],
                             "header": "Giavann Maxwell"
                         },
                         {
                             "image": {
                                 "src": "allekay_maxwell.png"
                             },
+                            "defaultFieldOrder": [
+                                {
+                                    "name": "header",
+                                    "order": 0
+                                },
+                                {
+                                    "name": "image",
+                                    "order": 1
+                                },
+                                {
+                                    "name": "link",
+                                    "order": 2
+                                },
+                                {
+                                    "name": "list",
+                                    "order": 3
+                                },
+                                {
+                                    "name": "body",
+                                    "order": 4
+                                }
+                            ],
                             "header": "Allekay Maxwell"
                         },
                         {
                             "image": {
                                 "src": "chaise.png"
                             },
+                            "defaultFieldOrder": [
+                                {
+                                    "name": "header",
+                                    "order": 0
+                                },
+                                {
+                                    "name": "image",
+                                    "order": 1
+                                },
+                                {
+                                    "name": "link",
+                                    "order": 2
+                                },
+                                {
+                                    "name": "list",
+                                    "order": 3
+                                },
+                                {
+                                    "name": "body",
+                                    "order": 4
+                                }
+                            ],
                             "header": "Chaise"
                         },
                         {
                             "image": {
                                 "src": "ty_waicokacola.png"
                             },
+                            "defaultFieldOrder": [
+                                {
+                                    "name": "header",
+                                    "order": 0
+                                },
+                                {
+                                    "name": "image",
+                                    "order": 1
+                                },
+                                {
+                                    "name": "link",
+                                    "order": 2
+                                },
+                                {
+                                    "name": "list",
+                                    "order": 3
+                                },
+                                {
+                                    "name": "body",
+                                    "order": 4
+                                }
+                            ],
                             "header": "TY Waicokacola"
                         },
                         {
                             "image": {
                                 "src": "zahra_waicokacola.png"
                             },
+                            "defaultFieldOrder": [
+                                {
+                                    "name": "header",
+                                    "order": 0
+                                },
+                                {
+                                    "name": "image",
+                                    "order": 1
+                                },
+                                {
+                                    "name": "link",
+                                    "order": 2
+                                },
+                                {
+                                    "name": "list",
+                                    "order": 3
+                                },
+                                {
+                                    "name": "body",
+                                    "order": 4
+                                }
+                            ],
                             "header": "Zahra Waicokacola"
                         },
                         {
                             "image": {
                                 "src": "ronin_da_barbarian.png"
                             },
+                            "defaultFieldOrder": [
+                                {
+                                    "name": "header",
+                                    "order": 0
+                                },
+                                {
+                                    "name": "image",
+                                    "order": 1
+                                },
+                                {
+                                    "name": "link",
+                                    "order": 2
+                                },
+                                {
+                                    "name": "list",
+                                    "order": 3
+                                },
+                                {
+                                    "name": "body",
+                                    "order": 4
+                                }
+                            ],
                             "header": "Ronin Da Barbarian"
                         }
                     ]
@@ -241,12 +1069,56 @@
                         "type": "tab",
                         "open": false
                     },
+                    "defaultFieldOrder": [
+                        {
+                            "name": "header",
+                            "order": 0
+                        },
+                        {
+                            "name": "image",
+                            "order": 1
+                        },
+                        {
+                            "name": "link",
+                            "order": 2
+                        },
+                        {
+                            "name": "list",
+                            "order": 3
+                        },
+                        {
+                            "name": "body",
+                            "order": 4
+                        }
+                    ],
                     "header": "Open Mens",
                     "sections": [
                         {
                             "image": {
                                 "src": "anthony_dillon.png"
                             },
+                            "defaultFieldOrder": [
+                                {
+                                    "name": "header",
+                                    "order": 0
+                                },
+                                {
+                                    "name": "image",
+                                    "order": 1
+                                },
+                                {
+                                    "name": "link",
+                                    "order": 2
+                                },
+                                {
+                                    "name": "list",
+                                    "order": 3
+                                },
+                                {
+                                    "name": "body",
+                                    "order": 4
+                                }
+                            ],
                             "header": "Anthony Dillon",
                             "list": [
                                 "NZ Mas Wrestling Open Mens Champion 2020",
@@ -260,60 +1132,280 @@
                             "image": {
                                 "src": "nate_reed.png"
                             },
+                            "defaultFieldOrder": [
+                                {
+                                    "name": "header",
+                                    "order": 0
+                                },
+                                {
+                                    "name": "image",
+                                    "order": 1
+                                },
+                                {
+                                    "name": "link",
+                                    "order": 2
+                                },
+                                {
+                                    "name": "list",
+                                    "order": 3
+                                },
+                                {
+                                    "name": "body",
+                                    "order": 4
+                                }
+                            ],
                             "header": "Nate Reed"
                         },
                         {
                             "image": {
                                 "src": "bruce_fata_to_o.png"
                             },
+                            "defaultFieldOrder": [
+                                {
+                                    "name": "header",
+                                    "order": 0
+                                },
+                                {
+                                    "name": "image",
+                                    "order": 1
+                                },
+                                {
+                                    "name": "link",
+                                    "order": 2
+                                },
+                                {
+                                    "name": "list",
+                                    "order": 3
+                                },
+                                {
+                                    "name": "body",
+                                    "order": 4
+                                }
+                            ],
                             "header": "Bruce Fata to’o"
                         },
                         {
                             "image": {
                                 "src": "george_pikaahu.png"
                             },
+                            "defaultFieldOrder": [
+                                {
+                                    "name": "header",
+                                    "order": 0
+                                },
+                                {
+                                    "name": "image",
+                                    "order": 1
+                                },
+                                {
+                                    "name": "link",
+                                    "order": 2
+                                },
+                                {
+                                    "name": "list",
+                                    "order": 3
+                                },
+                                {
+                                    "name": "body",
+                                    "order": 4
+                                }
+                            ],
                             "header": "George Pikaahu"
                         },
                         {
                             "image": {
                                 "src": "nicholas_tiria.png"
                             },
+                            "defaultFieldOrder": [
+                                {
+                                    "name": "header",
+                                    "order": 0
+                                },
+                                {
+                                    "name": "image",
+                                    "order": 1
+                                },
+                                {
+                                    "name": "link",
+                                    "order": 2
+                                },
+                                {
+                                    "name": "list",
+                                    "order": 3
+                                },
+                                {
+                                    "name": "body",
+                                    "order": 4
+                                }
+                            ],
                             "header": "Nicholas Tiria"
                         },
                         {
                             "image": {
                                 "src": "ricki_saua.png"
                             },
+                            "defaultFieldOrder": [
+                                {
+                                    "name": "header",
+                                    "order": 0
+                                },
+                                {
+                                    "name": "image",
+                                    "order": 1
+                                },
+                                {
+                                    "name": "link",
+                                    "order": 2
+                                },
+                                {
+                                    "name": "list",
+                                    "order": 3
+                                },
+                                {
+                                    "name": "body",
+                                    "order": 4
+                                }
+                            ],
                             "header": "Ricki Saua"
                         },
                         {
                             "image": {
                                 "src": "ronnie_nansen.png"
                             },
+                            "defaultFieldOrder": [
+                                {
+                                    "name": "header",
+                                    "order": 0
+                                },
+                                {
+                                    "name": "image",
+                                    "order": 1
+                                },
+                                {
+                                    "name": "link",
+                                    "order": 2
+                                },
+                                {
+                                    "name": "list",
+                                    "order": 3
+                                },
+                                {
+                                    "name": "body",
+                                    "order": 4
+                                }
+                            ],
                             "header": "Ronnie Nansen"
                         },
                         {
                             "image": {
                                 "src": "rieken_bourne.png"
                             },
+                            "defaultFieldOrder": [
+                                {
+                                    "name": "header",
+                                    "order": 0
+                                },
+                                {
+                                    "name": "image",
+                                    "order": 1
+                                },
+                                {
+                                    "name": "link",
+                                    "order": 2
+                                },
+                                {
+                                    "name": "list",
+                                    "order": 3
+                                },
+                                {
+                                    "name": "body",
+                                    "order": 4
+                                }
+                            ],
                             "header": "Rieken Bourne"
                         },
                         {
                             "image": {
                                 "src": "quinn_matene.png"
                             },
+                            "defaultFieldOrder": [
+                                {
+                                    "name": "header",
+                                    "order": 0
+                                },
+                                {
+                                    "name": "image",
+                                    "order": 1
+                                },
+                                {
+                                    "name": "link",
+                                    "order": 2
+                                },
+                                {
+                                    "name": "list",
+                                    "order": 3
+                                },
+                                {
+                                    "name": "body",
+                                    "order": 4
+                                }
+                            ],
                             "header": "Quinn Matene"
                         },
                         {
                             "image": {
                                 "src": "dennis_peseta.png"
                             },
+                            "defaultFieldOrder": [
+                                {
+                                    "name": "header",
+                                    "order": 0
+                                },
+                                {
+                                    "name": "image",
+                                    "order": 1
+                                },
+                                {
+                                    "name": "link",
+                                    "order": 2
+                                },
+                                {
+                                    "name": "list",
+                                    "order": 3
+                                },
+                                {
+                                    "name": "body",
+                                    "order": 4
+                                }
+                            ],
                             "header": "Dennis Peseta"
                         },
                         {
                             "image": {
                                 "src": "christian_sio_open-mens.jpeg"
                             },
+                            "defaultFieldOrder": [
+                                {
+                                    "name": "header",
+                                    "order": 0
+                                },
+                                {
+                                    "name": "image",
+                                    "order": 1
+                                },
+                                {
+                                    "name": "link",
+                                    "order": 2
+                                },
+                                {
+                                    "name": "list",
+                                    "order": 3
+                                },
+                                {
+                                    "name": "body",
+                                    "order": 4
+                                }
+                            ],
                             "header": "Christian Sio",
                             "list": [
                                 "Miada West Novice comp 2019  1st",
@@ -327,12 +1419,56 @@
                             "image": {
                                 "src": "andrew_fraser.png"
                             },
+                            "defaultFieldOrder": [
+                                {
+                                    "name": "header",
+                                    "order": 0
+                                },
+                                {
+                                    "name": "image",
+                                    "order": 1
+                                },
+                                {
+                                    "name": "link",
+                                    "order": 2
+                                },
+                                {
+                                    "name": "list",
+                                    "order": 3
+                                },
+                                {
+                                    "name": "body",
+                                    "order": 4
+                                }
+                            ],
                             "header": "Andrew Fraser"
                         },
                         {
                             "image": {
                                 "src": "dan_sio_opens_men.png"
                             },
+                            "defaultFieldOrder": [
+                                {
+                                    "name": "header",
+                                    "order": 0
+                                },
+                                {
+                                    "name": "image",
+                                    "order": 1
+                                },
+                                {
+                                    "name": "link",
+                                    "order": 2
+                                },
+                                {
+                                    "name": "list",
+                                    "order": 3
+                                },
+                                {
+                                    "name": "body",
+                                    "order": 4
+                                }
+                            ],
                             "header": "Dan Sio",
                             "list": [
                                 "Counties Strongest Man 2020 4th",
@@ -343,120 +1479,560 @@
                             "image": {
                                 "src": "isaac_elsmore.png"
                             },
+                            "defaultFieldOrder": [
+                                {
+                                    "name": "header",
+                                    "order": 0
+                                },
+                                {
+                                    "name": "image",
+                                    "order": 1
+                                },
+                                {
+                                    "name": "link",
+                                    "order": 2
+                                },
+                                {
+                                    "name": "list",
+                                    "order": 3
+                                },
+                                {
+                                    "name": "body",
+                                    "order": 4
+                                }
+                            ],
                             "header": "Isaac Elsmore"
                         },
                         {
                             "image": {
                                 "src": "erin_toma.png"
                             },
+                            "defaultFieldOrder": [
+                                {
+                                    "name": "header",
+                                    "order": 0
+                                },
+                                {
+                                    "name": "image",
+                                    "order": 1
+                                },
+                                {
+                                    "name": "link",
+                                    "order": 2
+                                },
+                                {
+                                    "name": "list",
+                                    "order": 3
+                                },
+                                {
+                                    "name": "body",
+                                    "order": 4
+                                }
+                            ],
                             "header": "Erin Toma"
                         },
                         {
                             "image": {
                                 "src": "hola_eleazar.png"
                             },
+                            "defaultFieldOrder": [
+                                {
+                                    "name": "header",
+                                    "order": 0
+                                },
+                                {
+                                    "name": "image",
+                                    "order": 1
+                                },
+                                {
+                                    "name": "link",
+                                    "order": 2
+                                },
+                                {
+                                    "name": "list",
+                                    "order": 3
+                                },
+                                {
+                                    "name": "body",
+                                    "order": 4
+                                }
+                            ],
                             "header": "Hola Eleazar"
                         },
                         {
                             "image": {
                                 "src": "male.png"
                             },
+                            "defaultFieldOrder": [
+                                {
+                                    "name": "header",
+                                    "order": 0
+                                },
+                                {
+                                    "name": "image",
+                                    "order": 1
+                                },
+                                {
+                                    "name": "link",
+                                    "order": 2
+                                },
+                                {
+                                    "name": "list",
+                                    "order": 3
+                                },
+                                {
+                                    "name": "body",
+                                    "order": 4
+                                }
+                            ],
                             "header": "Male"
                         },
                         {
                             "image": {
                                 "src": "iosefo_iosia.png"
                             },
+                            "defaultFieldOrder": [
+                                {
+                                    "name": "header",
+                                    "order": 0
+                                },
+                                {
+                                    "name": "image",
+                                    "order": 1
+                                },
+                                {
+                                    "name": "link",
+                                    "order": 2
+                                },
+                                {
+                                    "name": "list",
+                                    "order": 3
+                                },
+                                {
+                                    "name": "body",
+                                    "order": 4
+                                }
+                            ],
                             "header": "Iosefo Iosia"
                         },
                         {
                             "image": {
                                 "src": "fia_peni.png"
                             },
+                            "defaultFieldOrder": [
+                                {
+                                    "name": "header",
+                                    "order": 0
+                                },
+                                {
+                                    "name": "image",
+                                    "order": 1
+                                },
+                                {
+                                    "name": "link",
+                                    "order": 2
+                                },
+                                {
+                                    "name": "list",
+                                    "order": 3
+                                },
+                                {
+                                    "name": "body",
+                                    "order": 4
+                                }
+                            ],
                             "header": "Fia Peni"
                         },
                         {
                             "image": {
                                 "src": "zhan_matene.png"
                             },
+                            "defaultFieldOrder": [
+                                {
+                                    "name": "header",
+                                    "order": 0
+                                },
+                                {
+                                    "name": "image",
+                                    "order": 1
+                                },
+                                {
+                                    "name": "link",
+                                    "order": 2
+                                },
+                                {
+                                    "name": "list",
+                                    "order": 3
+                                },
+                                {
+                                    "name": "body",
+                                    "order": 4
+                                }
+                            ],
                             "header": "Zhan Matene"
                         },
                         {
                             "image": {
                                 "src": "tuatu_rapira_keil.png"
                             },
+                            "defaultFieldOrder": [
+                                {
+                                    "name": "header",
+                                    "order": 0
+                                },
+                                {
+                                    "name": "image",
+                                    "order": 1
+                                },
+                                {
+                                    "name": "link",
+                                    "order": 2
+                                },
+                                {
+                                    "name": "list",
+                                    "order": 3
+                                },
+                                {
+                                    "name": "body",
+                                    "order": 4
+                                }
+                            ],
                             "header": "Tuatu Rapira-keil"
                         },
                         {
                             "image": {
                                 "src": "jacob_sionepeni.png"
                             },
+                            "defaultFieldOrder": [
+                                {
+                                    "name": "header",
+                                    "order": 0
+                                },
+                                {
+                                    "name": "image",
+                                    "order": 1
+                                },
+                                {
+                                    "name": "link",
+                                    "order": 2
+                                },
+                                {
+                                    "name": "list",
+                                    "order": 3
+                                },
+                                {
+                                    "name": "body",
+                                    "order": 4
+                                }
+                            ],
                             "header": "Jacob Sionepeni"
                         },
                         {
                             "image": {
                                 "src": "joshua_fata_to_o.png"
                             },
+                            "defaultFieldOrder": [
+                                {
+                                    "name": "header",
+                                    "order": 0
+                                },
+                                {
+                                    "name": "image",
+                                    "order": 1
+                                },
+                                {
+                                    "name": "link",
+                                    "order": 2
+                                },
+                                {
+                                    "name": "list",
+                                    "order": 3
+                                },
+                                {
+                                    "name": "body",
+                                    "order": 4
+                                }
+                            ],
                             "header": "Joshua Fata to’o"
                         },
                         {
                             "image": {
                                 "src": "paulee_sosene.png"
                             },
+                            "defaultFieldOrder": [
+                                {
+                                    "name": "header",
+                                    "order": 0
+                                },
+                                {
+                                    "name": "image",
+                                    "order": 1
+                                },
+                                {
+                                    "name": "link",
+                                    "order": 2
+                                },
+                                {
+                                    "name": "list",
+                                    "order": 3
+                                },
+                                {
+                                    "name": "body",
+                                    "order": 4
+                                }
+                            ],
                             "header": "Paulee Sosene"
                         },
                         {
                             "image": {
                                 "src": "kingtee_alaifatu.png"
                             },
+                            "defaultFieldOrder": [
+                                {
+                                    "name": "header",
+                                    "order": 0
+                                },
+                                {
+                                    "name": "image",
+                                    "order": 1
+                                },
+                                {
+                                    "name": "link",
+                                    "order": 2
+                                },
+                                {
+                                    "name": "list",
+                                    "order": 3
+                                },
+                                {
+                                    "name": "body",
+                                    "order": 4
+                                }
+                            ],
                             "header": "KingTee  Alaifatu"
                         },
                         {
                             "image": {
                                 "src": "sio.png"
                             },
+                            "defaultFieldOrder": [
+                                {
+                                    "name": "header",
+                                    "order": 0
+                                },
+                                {
+                                    "name": "image",
+                                    "order": 1
+                                },
+                                {
+                                    "name": "link",
+                                    "order": 2
+                                },
+                                {
+                                    "name": "list",
+                                    "order": 3
+                                },
+                                {
+                                    "name": "body",
+                                    "order": 4
+                                }
+                            ],
                             "header": "Sio"
                         },
                         {
                             "image": {
                                 "src": "harris_tuaato.png"
                             },
+                            "defaultFieldOrder": [
+                                {
+                                    "name": "header",
+                                    "order": 0
+                                },
+                                {
+                                    "name": "image",
+                                    "order": 1
+                                },
+                                {
+                                    "name": "link",
+                                    "order": 2
+                                },
+                                {
+                                    "name": "list",
+                                    "order": 3
+                                },
+                                {
+                                    "name": "body",
+                                    "order": 4
+                                }
+                            ],
                             "header": "Harris Tuaato"
                         },
                         {
                             "image": {
                                 "src": "panapa_sadaraka.png"
                             },
+                            "defaultFieldOrder": [
+                                {
+                                    "name": "header",
+                                    "order": 0
+                                },
+                                {
+                                    "name": "image",
+                                    "order": 1
+                                },
+                                {
+                                    "name": "link",
+                                    "order": 2
+                                },
+                                {
+                                    "name": "list",
+                                    "order": 3
+                                },
+                                {
+                                    "name": "body",
+                                    "order": 4
+                                }
+                            ],
                             "header": "Panapa Sadaraka"
                         },
                         {
                             "image": {
                                 "src": "dawson_marama_feagai.png"
                             },
+                            "defaultFieldOrder": [
+                                {
+                                    "name": "header",
+                                    "order": 0
+                                },
+                                {
+                                    "name": "image",
+                                    "order": 1
+                                },
+                                {
+                                    "name": "link",
+                                    "order": 2
+                                },
+                                {
+                                    "name": "list",
+                                    "order": 3
+                                },
+                                {
+                                    "name": "body",
+                                    "order": 4
+                                }
+                            ],
                             "header": "Dawson Marama-Feagai"
                         },
                         {
                             "image": {
                                 "src": "anthony_taro_wirihana.png"
                             },
+                            "defaultFieldOrder": [
+                                {
+                                    "name": "header",
+                                    "order": 0
+                                },
+                                {
+                                    "name": "image",
+                                    "order": 1
+                                },
+                                {
+                                    "name": "link",
+                                    "order": 2
+                                },
+                                {
+                                    "name": "list",
+                                    "order": 3
+                                },
+                                {
+                                    "name": "body",
+                                    "order": 4
+                                }
+                            ],
                             "header": " Anthony Taro Wirihana"
                         },
                         {
                             "image": {
                                 "src": "eric_fuimaono_hunt.png"
                             },
+                            "defaultFieldOrder": [
+                                {
+                                    "name": "header",
+                                    "order": 0
+                                },
+                                {
+                                    "name": "image",
+                                    "order": 1
+                                },
+                                {
+                                    "name": "link",
+                                    "order": 2
+                                },
+                                {
+                                    "name": "list",
+                                    "order": 3
+                                },
+                                {
+                                    "name": "body",
+                                    "order": 4
+                                }
+                            ],
                             "header": "Eric Fuimaono Hunt"
                         },
                         {
                             "image": {
                                 "src": "ashley_lavin.png"
                             },
+                            "defaultFieldOrder": [
+                                {
+                                    "name": "header",
+                                    "order": 0
+                                },
+                                {
+                                    "name": "image",
+                                    "order": 1
+                                },
+                                {
+                                    "name": "link",
+                                    "order": 2
+                                },
+                                {
+                                    "name": "list",
+                                    "order": 3
+                                },
+                                {
+                                    "name": "body",
+                                    "order": 4
+                                }
+                            ],
                             "header": " Ashley Lavin"
                         },
                         {
                             "image": {
                                 "src": "vaughn_hannah_opens_men.png"
                             },
+                            "defaultFieldOrder": [
+                                {
+                                    "name": "header",
+                                    "order": 0
+                                },
+                                {
+                                    "name": "image",
+                                    "order": 1
+                                },
+                                {
+                                    "name": "link",
+                                    "order": 2
+                                },
+                                {
+                                    "name": "list",
+                                    "order": 3
+                                },
+                                {
+                                    "name": "body",
+                                    "order": 4
+                                }
+                            ],
                             "header": "Vaughn Hannah",
                             "list": [
                                 "2019 Auckland Strongman Series round 3 aopen Mens 3rd"
@@ -466,18 +2042,84 @@
                             "image": {
                                 "src": "keitel_henry.png"
                             },
+                            "defaultFieldOrder": [
+                                {
+                                    "name": "header",
+                                    "order": 0
+                                },
+                                {
+                                    "name": "image",
+                                    "order": 1
+                                },
+                                {
+                                    "name": "link",
+                                    "order": 2
+                                },
+                                {
+                                    "name": "list",
+                                    "order": 3
+                                },
+                                {
+                                    "name": "body",
+                                    "order": 4
+                                }
+                            ],
                             "header": "Keitel Henry"
                         },
                         {
                             "image": {
                                 "src": "ned_houkamau.png"
                             },
+                            "defaultFieldOrder": [
+                                {
+                                    "name": "header",
+                                    "order": 0
+                                },
+                                {
+                                    "name": "image",
+                                    "order": 1
+                                },
+                                {
+                                    "name": "link",
+                                    "order": 2
+                                },
+                                {
+                                    "name": "list",
+                                    "order": 3
+                                },
+                                {
+                                    "name": "body",
+                                    "order": 4
+                                }
+                            ],
                             "header": "Ned Houkamau"
                         },
                         {
                             "image": {
                                 "src": "ash_westerlund.png"
                             },
+                            "defaultFieldOrder": [
+                                {
+                                    "name": "header",
+                                    "order": 0
+                                },
+                                {
+                                    "name": "image",
+                                    "order": 1
+                                },
+                                {
+                                    "name": "link",
+                                    "order": 2
+                                },
+                                {
+                                    "name": "list",
+                                    "order": 3
+                                },
+                                {
+                                    "name": "body",
+                                    "order": 4
+                                }
+                            ],
                             "header": "Ash Westerlund",
                             "list": [
                                 "Deadlifr 270kg PB",
@@ -489,6 +2131,28 @@
                             "image": {
                                 "src": "jeremy_sullivan_opopen_mens.png"
                             },
+                            "defaultFieldOrder": [
+                                {
+                                    "name": "header",
+                                    "order": 0
+                                },
+                                {
+                                    "name": "image",
+                                    "order": 1
+                                },
+                                {
+                                    "name": "link",
+                                    "order": 2
+                                },
+                                {
+                                    "name": "list",
+                                    "order": 3
+                                },
+                                {
+                                    "name": "body",
+                                    "order": 4
+                                }
+                            ],
                             "header": "Jeremy Sullivan",
                             "list": [
                                 "2020 Miada West Novice comp Open Mens 4th"
@@ -498,6 +2162,28 @@
                             "image": {
                                 "src": "eruera_wirihana.png"
                             },
+                            "defaultFieldOrder": [
+                                {
+                                    "name": "header",
+                                    "order": 0
+                                },
+                                {
+                                    "name": "image",
+                                    "order": 1
+                                },
+                                {
+                                    "name": "link",
+                                    "order": 2
+                                },
+                                {
+                                    "name": "list",
+                                    "order": 3
+                                },
+                                {
+                                    "name": "body",
+                                    "order": 4
+                                }
+                            ],
                             "header": "Eruera Wirihana",
                             "list": [
                                 "2 x Manuwatu Strongest Man 2018, 2019",
@@ -509,6 +2195,28 @@
                             "image": {
                                 "src": "jay_waicokacola.png"
                             },
+                            "defaultFieldOrder": [
+                                {
+                                    "name": "header",
+                                    "order": 0
+                                },
+                                {
+                                    "name": "image",
+                                    "order": 1
+                                },
+                                {
+                                    "name": "link",
+                                    "order": 2
+                                },
+                                {
+                                    "name": "list",
+                                    "order": 3
+                                },
+                                {
+                                    "name": "body",
+                                    "order": 4
+                                }
+                            ],
                             "header": "Jay Waicokacola",
                             "list": [
                                 "Central Coast Strongest Man 2019 Champion"
@@ -519,6 +2227,28 @@
                                 "src": "man.png",
                                 "url": ""
                             },
+                            "defaultFieldOrder": [
+                                {
+                                    "name": "header",
+                                    "order": 0
+                                },
+                                {
+                                    "name": "image",
+                                    "order": 1
+                                },
+                                {
+                                    "name": "link",
+                                    "order": 2
+                                },
+                                {
+                                    "name": "list",
+                                    "order": 3
+                                },
+                                {
+                                    "name": "body",
+                                    "order": 4
+                                }
+                            ],
                             "header": "Nick Turia",
                             "list": [
                                 "2020 Miada West Novice comp  Open Mens 6th"
@@ -528,6 +2258,28 @@
                             "image": {
                                 "src": "paul_mau.png"
                             },
+                            "defaultFieldOrder": [
+                                {
+                                    "name": "header",
+                                    "order": 0
+                                },
+                                {
+                                    "name": "image",
+                                    "order": 1
+                                },
+                                {
+                                    "name": "link",
+                                    "order": 2
+                                },
+                                {
+                                    "name": "list",
+                                    "order": 3
+                                },
+                                {
+                                    "name": "body",
+                                    "order": 4
+                                }
+                            ],
                             "header": "Paul Mau",
                             "list": [
                                 "2019 Miada West Novice comp  6th",
@@ -539,6 +2291,28 @@
                                 "src": "man.png",
                                 "url": ""
                             },
+                            "defaultFieldOrder": [
+                                {
+                                    "name": "header",
+                                    "order": 0
+                                },
+                                {
+                                    "name": "image",
+                                    "order": 1
+                                },
+                                {
+                                    "name": "link",
+                                    "order": 2
+                                },
+                                {
+                                    "name": "list",
+                                    "order": 3
+                                },
+                                {
+                                    "name": "body",
+                                    "order": 4
+                                }
+                            ],
                             "header": "Bobby Mateo",
                             "list": [
                                 "Deadlift 230kg PB",
@@ -553,12 +2327,56 @@
                         "type": "tab",
                         "open": false
                     },
+                    "defaultFieldOrder": [
+                        {
+                            "name": "header",
+                            "order": 0
+                        },
+                        {
+                            "name": "image",
+                            "order": 1
+                        },
+                        {
+                            "name": "link",
+                            "order": 2
+                        },
+                        {
+                            "name": "list",
+                            "order": 3
+                        },
+                        {
+                            "name": "body",
+                            "order": 4
+                        }
+                    ],
                     "header": "U105kg Men",
                     "sections": [
                         {
                             "image": {
                                 "src": "ben_bowden.png"
                             },
+                            "defaultFieldOrder": [
+                                {
+                                    "name": "header",
+                                    "order": 0
+                                },
+                                {
+                                    "name": "image",
+                                    "order": 1
+                                },
+                                {
+                                    "name": "link",
+                                    "order": 2
+                                },
+                                {
+                                    "name": "list",
+                                    "order": 3
+                                },
+                                {
+                                    "name": "body",
+                                    "order": 4
+                                }
+                            ],
                             "header": "Ben Bowden",
                             "list": [
                                 "Static Monsters u105kg 1st 2019",
@@ -570,6 +2388,28 @@
                             "image": {
                                 "src": "oliver_wilson.png"
                             },
+                            "defaultFieldOrder": [
+                                {
+                                    "name": "header",
+                                    "order": 0
+                                },
+                                {
+                                    "name": "image",
+                                    "order": 1
+                                },
+                                {
+                                    "name": "link",
+                                    "order": 2
+                                },
+                                {
+                                    "name": "list",
+                                    "order": 3
+                                },
+                                {
+                                    "name": "body",
+                                    "order": 4
+                                }
+                            ],
                             "header": "Oliver Wilson",
                             "list": [
                                 "1 x Counties Strongest Man u105kg 2020",
@@ -580,12 +2420,56 @@
                             "image": {
                                 "src": "kyp_kotzikas.png"
                             },
+                            "defaultFieldOrder": [
+                                {
+                                    "name": "header",
+                                    "order": 0
+                                },
+                                {
+                                    "name": "image",
+                                    "order": 1
+                                },
+                                {
+                                    "name": "link",
+                                    "order": 2
+                                },
+                                {
+                                    "name": "list",
+                                    "order": 3
+                                },
+                                {
+                                    "name": "body",
+                                    "order": 4
+                                }
+                            ],
                             "header": "Kyp Kotzikas"
                         },
                         {
                             "image": {
                                 "src": "man.png"
                             },
+                            "defaultFieldOrder": [
+                                {
+                                    "name": "header",
+                                    "order": 0
+                                },
+                                {
+                                    "name": "image",
+                                    "order": 1
+                                },
+                                {
+                                    "name": "link",
+                                    "order": 2
+                                },
+                                {
+                                    "name": "list",
+                                    "order": 3
+                                },
+                                {
+                                    "name": "body",
+                                    "order": 4
+                                }
+                            ],
                             "header": "Jamaine Westerlund",
                             "list": [
                                 "NZ Strongman Series Nationals 2019 - 2nd place"
@@ -595,6 +2479,28 @@
                             "image": {
                                 "src": "duncan_davis.png"
                             },
+                            "defaultFieldOrder": [
+                                {
+                                    "name": "header",
+                                    "order": 0
+                                },
+                                {
+                                    "name": "image",
+                                    "order": 1
+                                },
+                                {
+                                    "name": "link",
+                                    "order": 2
+                                },
+                                {
+                                    "name": "list",
+                                    "order": 3
+                                },
+                                {
+                                    "name": "body",
+                                    "order": 4
+                                }
+                            ],
                             "header": "Duncan Davis",
                             "list": [
                                 "Static Monsters u105kg 2019 3rd",
@@ -605,24 +2511,112 @@
                             "image": {
                                 "src": "jamaine_westerlund.png"
                             },
+                            "defaultFieldOrder": [
+                                {
+                                    "name": "header",
+                                    "order": 0
+                                },
+                                {
+                                    "name": "image",
+                                    "order": 1
+                                },
+                                {
+                                    "name": "link",
+                                    "order": 2
+                                },
+                                {
+                                    "name": "list",
+                                    "order": 3
+                                },
+                                {
+                                    "name": "body",
+                                    "order": 4
+                                }
+                            ],
                             "header": "Jamaine Westerlund"
                         },
                         {
                             "image": {
                                 "src": "colin_sparey.png"
                             },
+                            "defaultFieldOrder": [
+                                {
+                                    "name": "header",
+                                    "order": 0
+                                },
+                                {
+                                    "name": "image",
+                                    "order": 1
+                                },
+                                {
+                                    "name": "link",
+                                    "order": 2
+                                },
+                                {
+                                    "name": "list",
+                                    "order": 3
+                                },
+                                {
+                                    "name": "body",
+                                    "order": 4
+                                }
+                            ],
                             "header": "Colin Sparey"
                         },
                         {
                             "image": {
                                 "src": "isaac_bell.png"
                             },
+                            "defaultFieldOrder": [
+                                {
+                                    "name": "header",
+                                    "order": 0
+                                },
+                                {
+                                    "name": "image",
+                                    "order": 1
+                                },
+                                {
+                                    "name": "link",
+                                    "order": 2
+                                },
+                                {
+                                    "name": "list",
+                                    "order": 3
+                                },
+                                {
+                                    "name": "body",
+                                    "order": 4
+                                }
+                            ],
                             "header": "Isaac Bell"
                         },
                         {
                             "image": {
                                 "src": "man.png"
                             },
+                            "defaultFieldOrder": [
+                                {
+                                    "name": "header",
+                                    "order": 0
+                                },
+                                {
+                                    "name": "image",
+                                    "order": 1
+                                },
+                                {
+                                    "name": "link",
+                                    "order": 2
+                                },
+                                {
+                                    "name": "list",
+                                    "order": 3
+                                },
+                                {
+                                    "name": "body",
+                                    "order": 4
+                                }
+                            ],
                             "header": "Tangaroa Keepa Jackson",
                             "list": [
                                 "Miada West Novice comp 2020 1st place",
@@ -636,12 +2630,56 @@
                         "type": "tab",
                         "open": false
                     },
+                    "defaultFieldOrder": [
+                        {
+                            "name": "header",
+                            "order": 0
+                        },
+                        {
+                            "name": "image",
+                            "order": 1
+                        },
+                        {
+                            "name": "link",
+                            "order": 2
+                        },
+                        {
+                            "name": "list",
+                            "order": 3
+                        },
+                        {
+                            "name": "body",
+                            "order": 4
+                        }
+                    ],
                     "header": "U90kg Men",
                     "sections": [
                         {
                             "image": {
                                 "src": "ryan_stowers.png"
                             },
+                            "defaultFieldOrder": [
+                                {
+                                    "name": "header",
+                                    "order": 0
+                                },
+                                {
+                                    "name": "image",
+                                    "order": 1
+                                },
+                                {
+                                    "name": "link",
+                                    "order": 2
+                                },
+                                {
+                                    "name": "list",
+                                    "order": 3
+                                },
+                                {
+                                    "name": "body",
+                                    "order": 4
+                                }
+                            ],
                             "header": "Ryan Stowers",
                             "list": [
                                 "Te Puke Strongest Man 2020 3rd",
@@ -652,6 +2690,28 @@
                             "image": {
                                 "src": "dino_omicevic.png"
                             },
+                            "defaultFieldOrder": [
+                                {
+                                    "name": "header",
+                                    "order": 0
+                                },
+                                {
+                                    "name": "image",
+                                    "order": 1
+                                },
+                                {
+                                    "name": "link",
+                                    "order": 2
+                                },
+                                {
+                                    "name": "list",
+                                    "order": 3
+                                },
+                                {
+                                    "name": "body",
+                                    "order": 4
+                                }
+                            ],
                             "header": "Dino Omicevic",
                             "list": [
                                 "NZ Static Monsters 2019 u90kg",
@@ -663,6 +2723,28 @@
                             "image": {
                                 "src": "troy_moyle.png"
                             },
+                            "defaultFieldOrder": [
+                                {
+                                    "name": "header",
+                                    "order": 0
+                                },
+                                {
+                                    "name": "image",
+                                    "order": 1
+                                },
+                                {
+                                    "name": "link",
+                                    "order": 2
+                                },
+                                {
+                                    "name": "list",
+                                    "order": 3
+                                },
+                                {
+                                    "name": "body",
+                                    "order": 4
+                                }
+                            ],
                             "header": "Troy Moyle",
                             "list": [
                                 "2nd Miada West Novice comp u105 2019",
@@ -676,12 +2758,56 @@
                         "type": "tab",
                         "open": false
                     },
+                    "defaultFieldOrder": [
+                        {
+                            "name": "header",
+                            "order": 0
+                        },
+                        {
+                            "name": "image",
+                            "order": 1
+                        },
+                        {
+                            "name": "link",
+                            "order": 2
+                        },
+                        {
+                            "name": "list",
+                            "order": 3
+                        },
+                        {
+                            "name": "body",
+                            "order": 4
+                        }
+                    ],
                     "header": "U80kg Men",
                     "sections": [
                         {
                             "image": {
                                 "src": "jagdip_bajwa.png"
                             },
+                            "defaultFieldOrder": [
+                                {
+                                    "name": "header",
+                                    "order": 0
+                                },
+                                {
+                                    "name": "image",
+                                    "order": 1
+                                },
+                                {
+                                    "name": "link",
+                                    "order": 2
+                                },
+                                {
+                                    "name": "list",
+                                    "order": 3
+                                },
+                                {
+                                    "name": "body",
+                                    "order": 4
+                                }
+                            ],
                             "header": "Jagdip Bajwa",
                             "list": [
                                 "NZ Strongman Series Nationals Champion 1st place"
@@ -691,16 +2817,59 @@
                             "image": {
                                 "src": "inderjit_singh.png"
                             },
+                            "defaultFieldOrder": [
+                                {
+                                    "name": "header",
+                                    "order": 0
+                                },
+                                {
+                                    "name": "image",
+                                    "order": 1
+                                },
+                                {
+                                    "name": "link",
+                                    "order": 2
+                                },
+                                {
+                                    "name": "list",
+                                    "order": 3
+                                },
+                                {
+                                    "name": "body",
+                                    "order": 4
+                                }
+                            ],
                             "header": "Inderjit Singh",
                             "list": [
                                 "NZ Strongman Series Nationals Champion 1st place"
                             ]
                         },
-
                         {
                             "image": {
                                 "src": "skyler_hawk.png"
                             },
+                            "defaultFieldOrder": [
+                                {
+                                    "name": "header",
+                                    "order": 0
+                                },
+                                {
+                                    "name": "image",
+                                    "order": 1
+                                },
+                                {
+                                    "name": "link",
+                                    "order": 2
+                                },
+                                {
+                                    "name": "list",
+                                    "order": 3
+                                },
+                                {
+                                    "name": "body",
+                                    "order": 4
+                                }
+                            ],
                             "header": "Skyler Hawk",
                             "list": [
                                 "NZ Strongman Series Nationals u90kg 3rd.place"
@@ -713,12 +2882,56 @@
                         "type": "tab",
                         "open": false
                     },
+                    "defaultFieldOrder": [
+                        {
+                            "name": "header",
+                            "order": 0
+                        },
+                        {
+                            "name": "image",
+                            "order": 1
+                        },
+                        {
+                            "name": "link",
+                            "order": 2
+                        },
+                        {
+                            "name": "list",
+                            "order": 3
+                        },
+                        {
+                            "name": "body",
+                            "order": 4
+                        }
+                    ],
                     "header": "Open Ladies",
                     "sections": [
                         {
                             "image": {
                                 "src": "man.png"
                             },
+                            "defaultFieldOrder": [
+                                {
+                                    "name": "header",
+                                    "order": 0
+                                },
+                                {
+                                    "name": "image",
+                                    "order": 1
+                                },
+                                {
+                                    "name": "link",
+                                    "order": 2
+                                },
+                                {
+                                    "name": "list",
+                                    "order": 3
+                                },
+                                {
+                                    "name": "body",
+                                    "order": 4
+                                }
+                            ],
                             "header": "Shar Pini",
                             "list": [
                                 "Arnold Classic competitor",
@@ -730,6 +2943,28 @@
                             "image": {
                                 "src": "man.png"
                             },
+                            "defaultFieldOrder": [
+                                {
+                                    "name": "header",
+                                    "order": 0
+                                },
+                                {
+                                    "name": "image",
+                                    "order": 1
+                                },
+                                {
+                                    "name": "link",
+                                    "order": 2
+                                },
+                                {
+                                    "name": "list",
+                                    "order": 3
+                                },
+                                {
+                                    "name": "body",
+                                    "order": 4
+                                }
+                            ],
                             "header": "Krissy Bhen",
                             "list": [
                                 "Auckland Strongman Series round 3 Open Ladies 2019 3rd",
@@ -740,6 +2975,28 @@
                             "image": {
                                 "src": "hosanna_mateo.png"
                             },
+                            "defaultFieldOrder": [
+                                {
+                                    "name": "header",
+                                    "order": 0
+                                },
+                                {
+                                    "name": "image",
+                                    "order": 1
+                                },
+                                {
+                                    "name": "link",
+                                    "order": 2
+                                },
+                                {
+                                    "name": "list",
+                                    "order": 3
+                                },
+                                {
+                                    "name": "body",
+                                    "order": 4
+                                }
+                            ],
                             "header": "Hosanna Mateo",
                             "list": [
                                 "Auckland Strongman Series round 3 Open Ladies 2018 3rd",
@@ -750,6 +3007,28 @@
                             "image": {
                                 "src": "kylie_clark.png"
                             },
+                            "defaultFieldOrder": [
+                                {
+                                    "name": "header",
+                                    "order": 0
+                                },
+                                {
+                                    "name": "image",
+                                    "order": 1
+                                },
+                                {
+                                    "name": "link",
+                                    "order": 2
+                                },
+                                {
+                                    "name": "list",
+                                    "order": 3
+                                },
+                                {
+                                    "name": "body",
+                                    "order": 4
+                                }
+                            ],
                             "header": "Kylie Clark",
                             "list": [
                                 "Auckland Strongman Series round 2 Open Ladies 2017 3rd",
@@ -760,48 +3039,224 @@
                             "image": {
                                 "src": "sharlene_pini.png"
                             },
+                            "defaultFieldOrder": [
+                                {
+                                    "name": "header",
+                                    "order": 0
+                                },
+                                {
+                                    "name": "image",
+                                    "order": 1
+                                },
+                                {
+                                    "name": "link",
+                                    "order": 2
+                                },
+                                {
+                                    "name": "list",
+                                    "order": 3
+                                },
+                                {
+                                    "name": "body",
+                                    "order": 4
+                                }
+                            ],
                             "header": "Sharlene Pini"
                         },
                         {
                             "image": {
                                 "src": "nora_jonez.png"
                             },
+                            "defaultFieldOrder": [
+                                {
+                                    "name": "header",
+                                    "order": 0
+                                },
+                                {
+                                    "name": "image",
+                                    "order": 1
+                                },
+                                {
+                                    "name": "link",
+                                    "order": 2
+                                },
+                                {
+                                    "name": "list",
+                                    "order": 3
+                                },
+                                {
+                                    "name": "body",
+                                    "order": 4
+                                }
+                            ],
                             "header": "Nora Jonez"
                         },
                         {
                             "image": {
                                 "src": "jodie_pryor.png"
                             },
+                            "defaultFieldOrder": [
+                                {
+                                    "name": "header",
+                                    "order": 0
+                                },
+                                {
+                                    "name": "image",
+                                    "order": 1
+                                },
+                                {
+                                    "name": "link",
+                                    "order": 2
+                                },
+                                {
+                                    "name": "list",
+                                    "order": 3
+                                },
+                                {
+                                    "name": "body",
+                                    "order": 4
+                                }
+                            ],
                             "header": "Jodie Pryor"
                         },
                         {
                             "image": {
                                 "src": "bailey_norris.png"
                             },
+                            "defaultFieldOrder": [
+                                {
+                                    "name": "header",
+                                    "order": 0
+                                },
+                                {
+                                    "name": "image",
+                                    "order": 1
+                                },
+                                {
+                                    "name": "link",
+                                    "order": 2
+                                },
+                                {
+                                    "name": "list",
+                                    "order": 3
+                                },
+                                {
+                                    "name": "body",
+                                    "order": 4
+                                }
+                            ],
                             "header": "Bailey Norris"
                         },
                         {
                             "image": {
                                 "src": "anna_alder.png"
                             },
+                            "defaultFieldOrder": [
+                                {
+                                    "name": "header",
+                                    "order": 0
+                                },
+                                {
+                                    "name": "image",
+                                    "order": 1
+                                },
+                                {
+                                    "name": "link",
+                                    "order": 2
+                                },
+                                {
+                                    "name": "list",
+                                    "order": 3
+                                },
+                                {
+                                    "name": "body",
+                                    "order": 4
+                                }
+                            ],
                             "header": "Anna Alder"
                         },
                         {
                             "image": {
                                 "src": "kelly_flesher.png"
                             },
+                            "defaultFieldOrder": [
+                                {
+                                    "name": "header",
+                                    "order": 0
+                                },
+                                {
+                                    "name": "image",
+                                    "order": 1
+                                },
+                                {
+                                    "name": "link",
+                                    "order": 2
+                                },
+                                {
+                                    "name": "list",
+                                    "order": 3
+                                },
+                                {
+                                    "name": "body",
+                                    "order": 4
+                                }
+                            ],
                             "header": "Kelly Flesher"
                         },
                         {
                             "image": {
                                 "src": "karewa_hawkins.png"
                             },
+                            "defaultFieldOrder": [
+                                {
+                                    "name": "header",
+                                    "order": 0
+                                },
+                                {
+                                    "name": "image",
+                                    "order": 1
+                                },
+                                {
+                                    "name": "link",
+                                    "order": 2
+                                },
+                                {
+                                    "name": "list",
+                                    "order": 3
+                                },
+                                {
+                                    "name": "body",
+                                    "order": 4
+                                }
+                            ],
                             "header": "Karewa Hawkins"
                         },
                         {
                             "image": {
                                 "src": "amy_ferriss.png"
                             },
+                            "defaultFieldOrder": [
+                                {
+                                    "name": "header",
+                                    "order": 0
+                                },
+                                {
+                                    "name": "image",
+                                    "order": 1
+                                },
+                                {
+                                    "name": "link",
+                                    "order": 2
+                                },
+                                {
+                                    "name": "list",
+                                    "order": 3
+                                },
+                                {
+                                    "name": "body",
+                                    "order": 4
+                                }
+                            ],
                             "header": " Amy Ferris"
                         }
                     ]
@@ -811,12 +3266,56 @@
                         "type": "tab",
                         "open": false
                     },
+                    "defaultFieldOrder": [
+                        {
+                            "name": "header",
+                            "order": 0
+                        },
+                        {
+                            "name": "image",
+                            "order": 1
+                        },
+                        {
+                            "name": "link",
+                            "order": 2
+                        },
+                        {
+                            "name": "list",
+                            "order": 3
+                        },
+                        {
+                            "name": "body",
+                            "order": 4
+                        }
+                    ],
                     "header": "U82kg Ladies",
                     "sections": [
                         {
                             "image": {
                                 "src": "manuao_stowers.png"
                             },
+                            "defaultFieldOrder": [
+                                {
+                                    "name": "header",
+                                    "order": 0
+                                },
+                                {
+                                    "name": "image",
+                                    "order": 1
+                                },
+                                {
+                                    "name": "link",
+                                    "order": 2
+                                },
+                                {
+                                    "name": "list",
+                                    "order": 3
+                                },
+                                {
+                                    "name": "body",
+                                    "order": 4
+                                }
+                            ],
                             "header": "Manuao Stowers",
                             "list": [
                                 "NZ Strongman Series Nationals u82kg 2019 3rd",
@@ -827,12 +3326,56 @@
                             "image": {
                                 "src": "u_tra_stowers.png"
                             },
+                            "defaultFieldOrder": [
+                                {
+                                    "name": "header",
+                                    "order": 0
+                                },
+                                {
+                                    "name": "image",
+                                    "order": 1
+                                },
+                                {
+                                    "name": "link",
+                                    "order": 2
+                                },
+                                {
+                                    "name": "list",
+                                    "order": 3
+                                },
+                                {
+                                    "name": "body",
+                                    "order": 4
+                                }
+                            ],
                             "header": "Tu-Ira Stowers"
                         },
                         {
                             "image": {
                                 "src": "casey_boxall.png"
                             },
+                            "defaultFieldOrder": [
+                                {
+                                    "name": "header",
+                                    "order": 0
+                                },
+                                {
+                                    "name": "image",
+                                    "order": 1
+                                },
+                                {
+                                    "name": "link",
+                                    "order": 2
+                                },
+                                {
+                                    "name": "list",
+                                    "order": 3
+                                },
+                                {
+                                    "name": "body",
+                                    "order": 4
+                                }
+                            ],
                             "header": "Casey Boxall"
                         }
                     ]
@@ -842,12 +3385,56 @@
                         "type": "tab",
                         "open": false
                     },
+                    "defaultFieldOrder": [
+                        {
+                            "name": "header",
+                            "order": 0
+                        },
+                        {
+                            "name": "image",
+                            "order": 1
+                        },
+                        {
+                            "name": "link",
+                            "order": 2
+                        },
+                        {
+                            "name": "list",
+                            "order": 3
+                        },
+                        {
+                            "name": "body",
+                            "order": 4
+                        }
+                    ],
                     "header": "U73kg Ladies",
                     "sections": [
                         {
                             "image": {
                                 "src": "kylie_vincent.png"
                             },
+                            "defaultFieldOrder": [
+                                {
+                                    "name": "header",
+                                    "order": 0
+                                },
+                                {
+                                    "name": "image",
+                                    "order": 1
+                                },
+                                {
+                                    "name": "link",
+                                    "order": 2
+                                },
+                                {
+                                    "name": "list",
+                                    "order": 3
+                                },
+                                {
+                                    "name": "body",
+                                    "order": 4
+                                }
+                            ],
                             "header": "Kylie Vincent",
                             "list": [
                                 "NZ Strongman Series Nationals u73kg Champion 2019",
@@ -863,12 +3450,56 @@
                         "type": "tab",
                         "open": false
                     },
+                    "defaultFieldOrder": [
+                        {
+                            "name": "header",
+                            "order": 0
+                        },
+                        {
+                            "name": "image",
+                            "order": 1
+                        },
+                        {
+                            "name": "link",
+                            "order": 2
+                        },
+                        {
+                            "name": "list",
+                            "order": 3
+                        },
+                        {
+                            "name": "body",
+                            "order": 4
+                        }
+                    ],
                     "header": "U65kg Ladies",
                     "sections": [
                         {
                             "image": {
                                 "src": "leehane_stowers.png"
                             },
+                            "defaultFieldOrder": [
+                                {
+                                    "name": "header",
+                                    "order": 0
+                                },
+                                {
+                                    "name": "image",
+                                    "order": 1
+                                },
+                                {
+                                    "name": "link",
+                                    "order": 2
+                                },
+                                {
+                                    "name": "list",
+                                    "order": 3
+                                },
+                                {
+                                    "name": "body",
+                                    "order": 4
+                                }
+                            ],
                             "header": "Leehane Stowers",
                             "list": [
                                 "Arnold Competitor",
@@ -879,10 +3510,30 @@
                             "image": {
                                 "src": "vendy_vespalcova.png"
                             },
+                            "defaultFieldOrder": [
+                                {
+                                    "name": "header",
+                                    "order": 0
+                                },
+                                {
+                                    "name": "image",
+                                    "order": 1
+                                },
+                                {
+                                    "name": "link",
+                                    "order": 2
+                                },
+                                {
+                                    "name": "list",
+                                    "order": 3
+                                },
+                                {
+                                    "name": "body",
+                                    "order": 4
+                                }
+                            ],
                             "header": "Vendy Vespalcova"
-
                         }
-
                     ]
                 },
                 {
@@ -890,12 +3541,56 @@
                         "type": "tab",
                         "open": false
                     },
+                    "defaultFieldOrder": [
+                        {
+                            "name": "header",
+                            "order": 0
+                        },
+                        {
+                            "name": "image",
+                            "order": 1
+                        },
+                        {
+                            "name": "link",
+                            "order": 2
+                        },
+                        {
+                            "name": "list",
+                            "order": 3
+                        },
+                        {
+                            "name": "body",
+                            "order": 4
+                        }
+                    ],
                     "header": "Masters Men",
                     "sections": [
                         {
                             "image": {
                                 "src": "afaese_paea.png"
                             },
+                            "defaultFieldOrder": [
+                                {
+                                    "name": "header",
+                                    "order": 0
+                                },
+                                {
+                                    "name": "image",
+                                    "order": 1
+                                },
+                                {
+                                    "name": "link",
+                                    "order": 2
+                                },
+                                {
+                                    "name": "list",
+                                    "order": 3
+                                },
+                                {
+                                    "name": "body",
+                                    "order": 4
+                                }
+                            ],
                             "header": "Afaese 'The Godfather' Paea",
                             "list": [
                                 "4 x NZ Strongest Man Masters Champion 2016, 2017, 2018, 2019",
@@ -911,6 +3606,28 @@
                             "image": {
                                 "src": "ben_paea.png"
                             },
+                            "defaultFieldOrder": [
+                                {
+                                    "name": "header",
+                                    "order": 0
+                                },
+                                {
+                                    "name": "image",
+                                    "order": 1
+                                },
+                                {
+                                    "name": "link",
+                                    "order": 2
+                                },
+                                {
+                                    "name": "list",
+                                    "order": 3
+                                },
+                                {
+                                    "name": "body",
+                                    "order": 4
+                                }
+                            ],
                             "header": "Ben 'The Tank' Paea",
                             "list": [
                                 "2 x NZ Strongest Man Masters 2017, 2018 2nd",
@@ -922,6 +3639,28 @@
                             "image": {
                                 "src": "hex_kingi_masters.png"
                             },
+                            "defaultFieldOrder": [
+                                {
+                                    "name": "header",
+                                    "order": 0
+                                },
+                                {
+                                    "name": "image",
+                                    "order": 1
+                                },
+                                {
+                                    "name": "link",
+                                    "order": 2
+                                },
+                                {
+                                    "name": "list",
+                                    "order": 3
+                                },
+                                {
+                                    "name": "body",
+                                    "order": 4
+                                }
+                            ],
                             "header": "Hex 'Uncle Hex' Kingi",
                             "list": [
                                 "NZ Static Monsters Masters 2019 1st",
@@ -934,6 +3673,28 @@
                             "image": {
                                 "src": "Karlos_tua.png"
                             },
+                            "defaultFieldOrder": [
+                                {
+                                    "name": "header",
+                                    "order": 0
+                                },
+                                {
+                                    "name": "image",
+                                    "order": 1
+                                },
+                                {
+                                    "name": "link",
+                                    "order": 2
+                                },
+                                {
+                                    "name": "list",
+                                    "order": 3
+                                },
+                                {
+                                    "name": "body",
+                                    "order": 4
+                                }
+                            ],
                             "header": "Karlos Tua",
                             "list": [
                                 "1 x Australia Static Monster Masters Champion 2018"
@@ -943,6 +3704,28 @@
                             "image": {
                                 "src": "joseph_apii_masters.png"
                             },
+                            "defaultFieldOrder": [
+                                {
+                                    "name": "header",
+                                    "order": 0
+                                },
+                                {
+                                    "name": "image",
+                                    "order": 1
+                                },
+                                {
+                                    "name": "link",
+                                    "order": 2
+                                },
+                                {
+                                    "name": "list",
+                                    "order": 3
+                                },
+                                {
+                                    "name": "body",
+                                    "order": 4
+                                }
+                            ],
                             "header": "Joseph Apii",
                             "list": [
                                 "Miada West Novice Masters 2020 2nd",
@@ -955,18 +3738,84 @@
                             "image": {
                                 "src": "whetu_flesher.png"
                             },
+                            "defaultFieldOrder": [
+                                {
+                                    "name": "header",
+                                    "order": 0
+                                },
+                                {
+                                    "name": "image",
+                                    "order": 1
+                                },
+                                {
+                                    "name": "link",
+                                    "order": 2
+                                },
+                                {
+                                    "name": "list",
+                                    "order": 3
+                                },
+                                {
+                                    "name": "body",
+                                    "order": 4
+                                }
+                            ],
                             "header": "Whetu Flesher"
                         },
                         {
                             "image": {
                                 "src": "clem_fortes.png"
                             },
+                            "defaultFieldOrder": [
+                                {
+                                    "name": "header",
+                                    "order": 0
+                                },
+                                {
+                                    "name": "image",
+                                    "order": 1
+                                },
+                                {
+                                    "name": "link",
+                                    "order": 2
+                                },
+                                {
+                                    "name": "list",
+                                    "order": 3
+                                },
+                                {
+                                    "name": "body",
+                                    "order": 4
+                                }
+                            ],
                             "header": "Clem Fortes"
                         },
                         {
                             "image": {
                                 "src": "man.png"
                             },
+                            "defaultFieldOrder": [
+                                {
+                                    "name": "header",
+                                    "order": 0
+                                },
+                                {
+                                    "name": "image",
+                                    "order": 1
+                                },
+                                {
+                                    "name": "link",
+                                    "order": 2
+                                },
+                                {
+                                    "name": "list",
+                                    "order": 3
+                                },
+                                {
+                                    "name": "body",
+                                    "order": 4
+                                }
+                            ],
                             "header": "Whetu Flesher",
                             "list": [
                                 "2 x NZ Strongest Man Masters 2016, 2017",
@@ -978,6 +3827,28 @@
                             "image": {
                                 "src": "rich_farrell.png"
                             },
+                            "defaultFieldOrder": [
+                                {
+                                    "name": "header",
+                                    "order": 0
+                                },
+                                {
+                                    "name": "image",
+                                    "order": 1
+                                },
+                                {
+                                    "name": "link",
+                                    "order": 2
+                                },
+                                {
+                                    "name": "list",
+                                    "order": 3
+                                },
+                                {
+                                    "name": "body",
+                                    "order": 4
+                                }
+                            ],
                             "header": "Rich Farrell",
                             "list": [
                                 "2 x NZ Strongest Man Masters u105 2019, 2020",
@@ -989,6 +3860,28 @@
                             "image": {
                                 "src": "nickgray.png"
                             },
+                            "defaultFieldOrder": [
+                                {
+                                    "name": "header",
+                                    "order": 0
+                                },
+                                {
+                                    "name": "image",
+                                    "order": 1
+                                },
+                                {
+                                    "name": "link",
+                                    "order": 2
+                                },
+                                {
+                                    "name": "list",
+                                    "order": 3
+                                },
+                                {
+                                    "name": "body",
+                                    "order": 4
+                                }
+                            ],
                             "header": "Nick Gray",
                             "list": [
                                 "220kg Deadlift PB",
@@ -1001,36 +3894,168 @@
                             "image": {
                                 "src": "charlie_panapa.png"
                             },
+                            "defaultFieldOrder": [
+                                {
+                                    "name": "header",
+                                    "order": 0
+                                },
+                                {
+                                    "name": "image",
+                                    "order": 1
+                                },
+                                {
+                                    "name": "link",
+                                    "order": 2
+                                },
+                                {
+                                    "name": "list",
+                                    "order": 3
+                                },
+                                {
+                                    "name": "body",
+                                    "order": 4
+                                }
+                            ],
                             "header": "Charlie Panapa"
                         },
                         {
                             "image": {
                                 "src": "faapo.png"
                             },
+                            "defaultFieldOrder": [
+                                {
+                                    "name": "header",
+                                    "order": 0
+                                },
+                                {
+                                    "name": "image",
+                                    "order": 1
+                                },
+                                {
+                                    "name": "link",
+                                    "order": 2
+                                },
+                                {
+                                    "name": "list",
+                                    "order": 3
+                                },
+                                {
+                                    "name": "body",
+                                    "order": 4
+                                }
+                            ],
                             "header": "Faapo"
                         },
                         {
                             "image": {
                                 "src": "nick_fegan.png"
                             },
+                            "defaultFieldOrder": [
+                                {
+                                    "name": "header",
+                                    "order": 0
+                                },
+                                {
+                                    "name": "image",
+                                    "order": 1
+                                },
+                                {
+                                    "name": "link",
+                                    "order": 2
+                                },
+                                {
+                                    "name": "list",
+                                    "order": 3
+                                },
+                                {
+                                    "name": "body",
+                                    "order": 4
+                                }
+                            ],
                             "header": "Nick Fegan"
                         },
                         {
                             "image": {
                                 "src": "chris_bigdog_bellette.png"
                             },
+                            "defaultFieldOrder": [
+                                {
+                                    "name": "header",
+                                    "order": 0
+                                },
+                                {
+                                    "name": "image",
+                                    "order": 1
+                                },
+                                {
+                                    "name": "link",
+                                    "order": 2
+                                },
+                                {
+                                    "name": "list",
+                                    "order": 3
+                                },
+                                {
+                                    "name": "body",
+                                    "order": 4
+                                }
+                            ],
                             "header": "Chris bigdog Bellette"
                         },
                         {
                             "image": {
                                 "src": "hoani_macfarter.png"
                             },
+                            "defaultFieldOrder": [
+                                {
+                                    "name": "header",
+                                    "order": 0
+                                },
+                                {
+                                    "name": "image",
+                                    "order": 1
+                                },
+                                {
+                                    "name": "link",
+                                    "order": 2
+                                },
+                                {
+                                    "name": "list",
+                                    "order": 3
+                                },
+                                {
+                                    "name": "body",
+                                    "order": 4
+                                }
+                            ],
                             "header": "Hoani Macfarter"
                         },
                         {
                             "image": {
                                 "src": "tim_gray.png"
                             },
+                            "defaultFieldOrder": [
+                                {
+                                    "name": "header",
+                                    "order": 0
+                                },
+                                {
+                                    "name": "image",
+                                    "order": 1
+                                },
+                                {
+                                    "name": "link",
+                                    "order": 2
+                                },
+                                {
+                                    "name": "list",
+                                    "order": 3
+                                },
+                                {
+                                    "name": "body",
+                                    "order": 4
+                                }
+                            ],
                             "header": "Tim Gray"
                         }
                     ]
@@ -1040,10 +4065,33 @@
                         "type": "tab",
                         "open": false
                     },
+                    "defaultFieldOrder": [
+                        {
+                            "name": "header",
+                            "order": 0
+                        },
+                        {
+                            "name": "image",
+                            "order": 1
+                        },
+                        {
+                            "name": "link",
+                            "order": 2
+                        },
+                        {
+                            "name": "list",
+                            "order": 3
+                        },
+                        {
+                            "name": "body",
+                            "order": 4
+                        }
+                    ],
                     "header": "Masters Woman",
                     "body": "coming soon!!"
                 }
-            ]
+            ],
+            "templateContent": "import React from 'react';\nimport SectionList from 'components/SectionList';\nimport {getPage} from 'components/pages/manifestUtil';\n\nexport default () => (\n    <div className={'page center-it '}>\n        <h1>Athletes</h1>\n        <SectionList sections={getPage('athletes').sections} />\n    </div>\n);\n"
         },
         {
             "id": 7,
@@ -1053,14 +4101,58 @@
             "sections": [
                 {
                     "link": "https://facebook.com/events/s/new-zealand-strongman-series-n/250416402951612",
+                    "defaultFieldOrder": [
+                        {
+                            "name": "header",
+                            "order": 0
+                        },
+                        {
+                            "name": "image",
+                            "order": 1
+                        },
+                        {
+                            "name": "link",
+                            "order": 2
+                        },
+                        {
+                            "name": "list",
+                            "order": 3
+                        },
+                        {
+                            "name": "body",
+                            "order": 4
+                        }
+                    ],
                     "header": "New Zealand Strongman Series Nationals 2020"
-
-                }, {
+                },
+                {
                     "link": "https://facebook.com/events/s/aucklands-strongest-man-woman-/2859368420843627/",
+                    "defaultFieldOrder": [
+                        {
+                            "name": "header",
+                            "order": 0
+                        },
+                        {
+                            "name": "image",
+                            "order": 1
+                        },
+                        {
+                            "name": "link",
+                            "order": 2
+                        },
+                        {
+                            "name": "list",
+                            "order": 3
+                        },
+                        {
+                            "name": "body",
+                            "order": 4
+                        }
+                    ],
                     "header": "Auckland's Strongest Man & Woman 2020"
-
-                }]
-
+                }
+            ],
+            "templateContent": "import React from 'react';\nimport SectionList from 'components/SectionList';\nimport {getPage} from 'components/pages/manifestUtil';\n\nexport default () => (\n    <div className={'page center-it sponsors'}>\n        <h1>News</h1>\n        <SectionList sections={getPage('news').sections} />\n    </div>\n);\n"
         },
         {
             "id": 8,
@@ -1076,7 +4168,6 @@
                     "src": "strenth_gear.jpg",
                     "url": "https://strengthgear.co.nz"
                 },
-
                 {
                     "src": "tumunu_sunglasses.fw_.png",
                     "url": "https://www.tumunusunglasses.co.nz"
@@ -1099,33 +4190,37 @@
                     "src": "jacksmeat.fw_.png",
                     "url": ""
                 }
-            ]
+            ],
+            "templateContent": "import React from 'react';\nimport ImageLinkList from './../ImageLinkList';\nimport {getPage} from 'components/pages/manifestUtil';\n\nexport default () => (\n    <div className={'page center-it sponsors'}>\n        <h1>Sponsors</h1>\n        <ImageLinkList images={getPage('sponsors').images} />\n    </div>\n);\n"
         },
-
         {
             "id": 9,
             "name": "Checkout",
             "path": "checkout",
-            "template": "src/components/pages/Checkout"
+            "template": "src/components/pages/Checkout",
+            "isDeletable": false,
+            "isFixedURLPath": true,
+            "templateContent": "import React from 'react';\nimport Checkout from './../ecom/Checkout';\n\nexport default () => (\n    <div className=\"page center-it\">\n        <h1 className=\"center-text\">Checkout</h1>\n        <Checkout />\n    </div>\n);\n"
         }
     ],
     "products": [
         {
             "type": "dummy",
             "title": "dummy prod",
-            "description": "Adummy",
+            "description": "[{\"type\":\"paragraph\",\"children\":[{\"text\":\"A line of text in a paragraph.\"}]}]",
             "price": 1,
             "image": "strength_pit_black_training_tshirt.jpg",
             "variations": []
-
-        },  {
+        },
+        {
             "type": "TSHIRT",
             "title": "Training Tee",
-            "description": "AS Colors - Staple",
+            "description": "[{\"type\":\"paragraph\",\"children\":[{\"text\":\"AS Colors - Staple.\"}]}]",
             "price": 25,
             "image": "strength_pit_black_training_tshirt.jpg",
             "variations": [
                 {
+                    "type": "generic",
                     "title": "Size",
                     "item": [
                         {
@@ -1165,11 +4260,12 @@
         {
             "type": "TSHIRT",
             "title": "Dress tshirt",
-            "description": "AS Colors - Staple",
+            "description": "[{\"type\":\"paragraph\",\"children\":[{\"text\":\"AS Colors - Staple.\"}]}]",
             "price": 35,
             "image": "strength_pit_white_tshirt.png",
             "variations": [
                 {
+                    "type": "generic",
                     "title": "Size",
                     "item": [
                         {
@@ -1205,6 +4301,7 @@
                     ]
                 },
                 {
+                    "type": "image",
                     "title": "Color",
                     "item": [
                         {
@@ -1238,10 +4335,11 @@
         {
             "type": "Gold-Sovereeign-Rings",
             "title": "Gold Sovereeign Rings",
-            "description": "<strong> (Reserved for Pit Members Only) </strong>Custom branded sovereign and half sovereign signet rings for Strength Pit Otara.",
+            "description": "[{\"type\":\"paragraph\",\"children\":[{\"text\":\"(Reserved for Pit Members Only) Custom branded sovereign and half sovereign signet rings for Strength Pit Otara.\"}]}]",
             "image": "gold-ring.png",
             "variations": [
                 {
+                    "type": "price",
                     "title": "Sovereeign",
                     "item": [
                         {
@@ -1263,10 +4361,11 @@
         {
             "type": "Sterling Silver RINGS",
             "title": "Sterling Silver RINGS",
-            "description": "A truly special piece with jewellery and fragrance combined, we introduce you - Scented Jewellery. An inspiring and unique gift or a piece to own for yourself, this innovative accessory offers you both perfume and jewellery in one product - a true girl’s best friend!<br /><br />Each scented <b>jewellery</b> comes with a 3 month supply of scented stone that slowly diffuse the fragrance of your choice and allows the perfume to slowly release into the air around you. A new and clever way of wearing your perfume!",
+            "description": "[{\"type\":\"paragraph\",\"children\":[{\"text\":\"A truly special piece with jewellery and fragrance combined, we introduce you - Scented Jewellery. An inspiring and unique gift or a piece to own for yourself, this innovative accessory offers you both perfume and jewellery in one product - a true girl’s best friend! Each scented jewellery comes with a 3 month supply of scented stone that slowly diffuse the fragrance of your choice and allows the perfume to slowly release into the air around you. A new and clever way of wearing your perfume!\"}]}]",
             "image": "silver-ring3.png",
             "variations": [
                 {
+                    "type": "price",
                     "title": "Sovereeign",
                     "item": [
                         {
@@ -1288,10 +4387,11 @@
         {
             "type": "Gold / Sterling Silver RINGS",
             "title": "1/2 Gold & Sterling Silver RINGS",
-            "description": "A truly special piece with jewellery and fragrance combined, we introduce you - Scented Jewellery. An inspiring and unique gift or a piece to own for yourself, this innovative accessory offers you both perfume and jewellery in one product - a true girl’s best friend!<br /><br />Each scented <b>jewellery</b> comes with a 3 month supply of scented stone that slowly diffuse the fragrance of your choice and allows the perfume to slowly release into the air around you. A new and clever way of wearing your perfume!",
+            "description": "[{\"type\":\"paragraph\",\"children\":[{\"text\":\"A truly special piece with jewellery and fragrance combined, we introduce you - Scented Jewellery. An inspiring and unique gift or a piece to own for yourself, this innovative accessory offers you both perfume and jewellery in one product - a true girl’s best friend! Each scented jewellery comes with a 3 month supply of scented stone that slowly diffuse the fragrance of your choice and allows the perfume to slowly release into the air around you. A new and clever way of wearing your perfume!\"}]}]",
             "image": "gold-ring.png",
             "variations": [
                 {
+                    "type": "price",
                     "title": "Sovereeign",
                     "item": [
                         {

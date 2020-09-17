@@ -305,7 +305,7 @@ button:disabled {
 }
 
 #menu a {
-    border-bottom: 1px rgba(202, 10, 3, 0.472) solid;
+    /*border-bottom: 1px rgba(202, 10, 3, 0.472) solid;
     color: rgb(202, 8, 3);
     padding-left: 12px;
     padding-right: 12px;
@@ -315,7 +315,18 @@ button:disabled {
     text-align: center;
     letter-spacing: 5px;
     font-family: impact !important;
+    user-select: none;*/
+
+    border-bottom: 1px rgba(202, 10, 3, 0.472) solid;
+    padding-right: 12px;
+    text-decoration: none;
+    font-weight: bold;
+    opacity: 0.8;
+    text-align: center;
+    font-family: impact sans-serif !important;
+    -webkit-user-select: none;
     user-select: none;
+    color: rgb(202, 8, 3);
 }
 
 #menu a.active {
@@ -771,7 +782,7 @@ a:hover {
         text-align: left;
     }
 }
-
+/*
 .about-block,
 h1 {
     animation-duration: 3s;
@@ -781,8 +792,8 @@ h1 {
 h1 {
     animation-duration: 3s;
     animation-name: slideinAndSpin;
-}
-
+}*/
+/*
 @keyframes slidein {
     from {
         margin-left: 100%;
@@ -799,7 +810,7 @@ h1 {
         margin-left: 0%;
         width: 100%;
     }
-}
+}*/
 
 footer {
     position: fixed;
@@ -828,7 +839,7 @@ footer {
     font-weight: unset;
     border-radius: 0;
 }
-
+/*
 @keyframes slideinAndSpin {
     from {
         margin-left: 50%;
@@ -847,7 +858,7 @@ footer {
         width: 100%;
         transform: rotate(360deg);
     }
-}
+}*/
 
 img {
     animation-duration: 1s;

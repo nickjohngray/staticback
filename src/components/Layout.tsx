@@ -1,5 +1,5 @@
 import {globalHistory, HistoryListenerParameter, Router} from '@reach/router';
-import React, {FC} from 'react';
+import React, {FC, useEffect} from 'react';
 import {connect} from 'react-redux';
 import {Routes, useSiteData} from 'react-static';
 import {Dispatch} from 'redux';
@@ -10,16 +10,18 @@ import ShortCartSummary from './ecom/ShortCartSummary';
 import Header from './Header';
 import ContentToggler from 'components/blockout/ContentToggler';
 
-interface LayoutSummaryProps {
+interface IProps {
     changeURL: (url: IHistory) => void;
     loadShop: () => void;
 }
 
-const Layout: FC<LayoutSummaryProps> = ({changeURL, loadShop}) => {
+const Layout: FC<IProps> = ({changeURL, loadShop}) => {
     loadShop();
 
     globalHistory.listen((history: HistoryListenerParameter) => {
-        changeURL({URL: history.location.pathname});
+        try {
+            changeURL({URL: history.location.pathname});
+        } catch {}
     });
 
     return (
@@ -59,13 +61,6 @@ const mapDispatchToProps = (dispatch: Dispatch) => ({
     loadShop: () => {
         const manifest: IManifest = useSiteData();
         dispatch(loadShop(manifest));
-
-        /* const page: IPage = manifest.pages.find(page => page.path === 'sponsors');
-
-        page.images.map(image => {
-            const Img = new Image();
-            Img.src = require('./../images/' + image.src);
-        });*/
     }
 });
 

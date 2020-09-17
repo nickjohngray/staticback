@@ -1,11 +1,11 @@
 import React, {useEffect, useState} from 'react';
 // @ts-ignore
-import words from './../../images/words.png';
+import words from '../../assets/words.png';
 // logo-words.png, logo-man
 // @ts-ignore
-import man from './../../images/man4.png';
+import man from '../../assets/man4.png';
 // @ts-ignore
-import ball from './../../images/ball2.png';
+import ball from '../../assets/ball2.png';
 
 export default () => {
     const [spinBall, setSpinBall] = useState(true);
@@ -19,7 +19,7 @@ export default () => {
     });
 
     const toggleSpin = () => {
-        window.setTimeout(() => {
+        setTimeout(() => {
             setSpinBall(!spinBall);
             toggleSpin();
         }, 20000);

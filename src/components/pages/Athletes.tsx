@@ -1,6 +1,6 @@
 import React from 'react';
 import SectionList from 'components/SectionList';
-import {getPage} from 'components/pages/pageUtil';
+import {getPage} from 'components/pages/manifestUtil';
 
 export default () => (
     <div className={'page center-it '}>

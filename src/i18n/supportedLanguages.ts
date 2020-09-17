@@ -1,6 +1,6 @@
 export default [
     {
         name: 'English',
-        code: 'en',
-    },
+        code: 'en'
+    }
 ];

@@ -1,12 +1,13 @@
+//@tslint:disable
 import React from 'react';
 import Carousel, {Modal, ModalGateway} from 'react-images';
 import axios from 'axios';
 
-interface Props {
+interface IProps {
     FBAccessToken: string;
 }
 
-interface State {
+interface IState {
     images: string[];
     isLightboxOpen: boolean;
     selectedIndex: number;
@@ -15,8 +16,8 @@ interface State {
     previous: {};
 }
 
-class FBGallery extends React.Component<Props, State> {
-    constructor(props: Props) {
+class FBGallery extends React.Component<IProps, IState> {
+    constructor(props: IProps) {
         super(props);
 
         this.state = {
@@ -40,7 +41,7 @@ class FBGallery extends React.Component<Props, State> {
         try {
             const galleryId = '435429489951715';
             const key =
-                'EAADnfUDm9OcBAEPg8ieduhT9domSwpoi9eLFzKjI0g87EPerr7MklZALZBk81Ur0tUQGmfzGCLQZCcCTX7YJzfXeuvjQBaY8GN1ObMFAxkPOTIY9XU4DGlKeiZCRhgOVjs0rCYIU0CLq530XP3g3JfnekhXFq4h2TxRsQ4o7YpMifMT6wfLCUrOt9d0OH0ZAZCDJJQYWG0YgZDZD';
+                'EAADcbfCjxXkBAK9QI5BKqrVr5ChzfJBnbnwDZBPpIXzIEqchIMmK3xYZARkqWVcHXfO0HwZB4KnK5VLIL42aZAI0c2rHSNH3yZCpEnRTBp6ZACQLT5FwESNq790s9XTCGGGsOVN5iRGyTBHozMhxeVuPGl4mOTEli5FiUV6uzoaAZDZD';
 
             const response = await axios.get(
                 'https://graph.facebook.com/v6.0/' +
@@ -62,7 +63,7 @@ class FBGallery extends React.Component<Props, State> {
             this.loadImages(photos, null, paging.next);
         } catch (e) {
             console.log(e);
-            alert('we had trouble loading images from facebook, the error was ' + e.message);
+            alert('we had trouble loading assets from facebook, the error was ' + e.message);
         }
     };
 
@@ -80,12 +81,12 @@ class FBGallery extends React.Component<Props, State> {
     }
 
     next = async () => {
-        const response = await axios.get(this.state.next);
+        const response = await axios.get(this.state.next as string);
         this.loadImages(response.data.data, response.data.paging.previous, response.data.paging.next);
     };
 
     previous = async () => {
-        const response = await axios.get(this.state.previous);
+        const response = await axios.get(this.state.previous as string);
         this.loadImages(response.data.data, response.data.paging.previous, response.data.paging.next);
     };
 
@@ -96,13 +97,17 @@ class FBGallery extends React.Component<Props, State> {
             <>
                 {!isLoading ? (
                     <div className="image-gallery-container">
-                        {images.map(({caption, thumbnail}, index) => (
+                        {images.map((objectWithCaptionAndThumbnail: any, index) => (
                             <div
                                 className="image-gallery-image-box"
                                 onClick={() => this.toggleLightbox(index)}
                                 key={index}
                             >
-                                <img alt={caption} src={thumbnail} className="image-gallery-image" />
+                                <img
+                                    alt={objectWithCaptionAndThumbnail.caption}
+                                    src={objectWithCaptionAndThumbnail.thumbnail}
+                                    className="image-gallery-image"
+                                />
                             </div>
                         ))}
                     </div>
@@ -112,8 +117,13 @@ class FBGallery extends React.Component<Props, State> {
 
                 <ModalGateway>
                     {isLightboxOpen && !isLoading ? (
-                        <Modal onClose={this.toggleLightbox}>
-                            <Carousel currentIndex={selectedIndex} views={images} />
+                        //todo why does this make ts error ?
+                        <Modal
+                            onClose={(x: any) => {
+                                this.toggleLightbox(x);
+                            }}
+                        >
+                            <Carousel currentIndex={selectedIndex} views={images as any} />
                         </Modal>
                     ) : null}
                 </ModalGateway>

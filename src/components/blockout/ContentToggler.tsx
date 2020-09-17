@@ -1,12 +1,12 @@
 import React, {useState} from 'react';
 
-export interface Props {
+export interface IProps {
     title: string;
     className: string;
     children: any;
 }
 
-const ContentToggler = ({className, title, children}: Props) => {
+const ContentToggler = ({className, title, children}: IProps) => {
     const [isVisible, setVisible] = useState(false);
 
     return (

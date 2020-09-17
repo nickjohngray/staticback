@@ -1,15 +1,15 @@
 import React from 'react';
 
-interface SearchBarProps {
+interface IProps {
     handleFormSubmit: (obj: any) => void;
 }
 
-interface SearchBarState {
+interface IState {
     term: string;
 }
 
-class SearchBar extends React.Component<SearchBarProps, SearchBarState> {
-    constructor(props: SearchBarProps) {
+class SearchBar extends React.Component<IProps, IState> {
+    constructor(props: IProps) {
         super(props);
 
         this.state = {

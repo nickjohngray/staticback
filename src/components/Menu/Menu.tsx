@@ -2,7 +2,7 @@ import {faBars, faDumbbell} from '@fortawesome/free-solid-svg-icons';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import React, {FC, useEffect, useState} from 'react';
 import {connect} from 'react-redux';
-import {IState} from '../../typings';
+import {IStore} from '../../typings';
 import MenuItems from './MenuItems';
 
 const Menu: FC = () => {
@@ -36,7 +36,7 @@ const Menu: FC = () => {
     );
 };
 
-export default connect((state: IState) => ({
+export default connect((state: IStore) => ({
     URL: state.history.URL,
     cartCount: state.cart.items.length
 }))(Menu);

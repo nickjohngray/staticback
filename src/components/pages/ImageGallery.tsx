@@ -1,6 +1,6 @@
 import React from 'react';
 import FBGallery from '../FBGallery';
-import {getPage} from 'components/pages/pageUtil';
+import {getPage} from 'components/pages/manifestUtil';
 
 export default () => (
     <div className="page">

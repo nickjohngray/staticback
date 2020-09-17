@@ -4,11 +4,11 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {Dispatch} from 'redux';
 import {emptyCart} from '../../redux/actions/cart.action';
-import {ICartItem, IState} from '../../typings';
+import {ICartItem, IStore} from '../../typings';
 import {faCartArrowDown} from '@fortawesome/free-solid-svg-icons';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 
-interface CartSummaryProps {
+interface IProps {
     latestProduct: ICartItem;
     cartCount: number;
     cartTotal: number;
@@ -16,12 +16,12 @@ interface CartSummaryProps {
     URL: string;
 }
 
-interface CartSummaryState {
+interface IState {
     activePage: string;
 }
 
-class ShortCartSummary extends React.Component<CartSummaryProps, CartSummaryState> {
-    constructor(props: CartSummaryProps) {
+class ShortCartSummary extends React.Component<IProps, IStore> {
+    constructor(props: IProps) {
         super(props);
     }
 
@@ -54,7 +54,7 @@ const mapDispatchToProps = (dispatch: Dispatch) => ({
 });
 
 export default connect(
-    (state: IState) => ({
+    (state: IStore) => ({
         latestProduct: getLastAddedProduct(state.cart.items),
         cartCount: state.cart.items.length,
         cartTotal: state.cart.items.length > 0 ? getCartTotal(state.cart.items) : 0,

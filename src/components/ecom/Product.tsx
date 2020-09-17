@@ -1,26 +1,27 @@
 import cloneDeep from 'lodash/cloneDeep';
 import React from 'react';
-import {ICartItem, IProduct, SingleVariation, Variation, VariationItem} from '../../typings';
+import {ICartItem, IProduct, ISingleVariation, Variation, VariationItem} from '../../typings';
 import {faCartPlus} from '@fortawesome/free-solid-svg-icons';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
-import parse from 'html-react-parser';
+import RichText from '../RichText/RichText';
+/*import parse from 'html-react-parser';*/
 
-interface ProductState {
-    selectedVariations: SingleVariation[];
+interface IState {
+    selectedVariations: ISingleVariation[];
     image: string;
     fullMode: boolean;
     price: number | null;
 }
 
-interface ProductProps extends IProduct {
+interface IProps extends IProduct {
     onAddToCart: (cartItem: ICartItem) => void;
 }
 
-class Product extends React.Component<ProductProps, ProductState> {
-    constructor(props: ProductProps) {
+class Product extends React.Component<IProps, IState> {
+    constructor(props: IProps) {
         super(props);
 
-        const selectedVariations: SingleVariation[] = [];
+        const selectedVariations: ISingleVariation[] = [];
 
         this.props.variations.forEach(variation => {
             selectedVariations.push({name: variation.title, option: variation.item[0]});
@@ -81,11 +82,11 @@ class Product extends React.Component<ProductProps, ProductState> {
             <div className="product-image">
                 {this.state.fullMode ? (
                     <div className="product-large-mode" onClick={() => this.setState({fullMode: false})}>
-                        <img src={require('./../../images/' + this.state.image)} />
+                        <img src={require('./../../assets/' + this.state.image)} />
                     </div>
                 ) : (
                     <div className="product-small-mode" onClick={() => this.setState({fullMode: true})}>
-                        <img className="img-size-half" src={require('./../../images/' + this.state.image)} />
+                        <img className="img-size-half" src={require('./../../assets/' + this.state.image)} />
                     </div>
                 )}
             </div>
@@ -121,7 +122,7 @@ class Product extends React.Component<ProductProps, ProductState> {
                         ) !== undefined
                     }
                     onClick={() => {
-                        /*  pass the fields needed to create a cart item 
+                        /*  pass the fields needed to create a cart item
                             the id will be set in the shop component
                             if this product has  a price variation set it as
                             the this products price */
@@ -136,7 +137,10 @@ class Product extends React.Component<ProductProps, ProductState> {
                     Add to cart <FontAwesomeIcon icon={faCartPlus} title="Add to cart" />
                 </button>
             </div>
-            <div className="product-description">{parse(this.props.description)}</div>
+            <div className="product-description">
+                <RichText style={{backgroundColor: 'black'}} json={JSON.parse(this.props.description)} />
+                {/* {parse(this.props.description)}*/}
+            </div>
         </div>
     );
 }

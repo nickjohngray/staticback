@@ -1,11 +1,11 @@
 import React, {FC, useState} from 'react';
-import {ISection, IImage, SectionOpener} from '../typings';
+import {ISection, IImage, ISectionOpener} from '../typings';
 import parse from 'html-react-parser';
 import SectionList from './SectionList';
 
 //TODO: use image path rather then hard coded path
 // when combine strings in require webpack fails to get the image!!!!!!
-interface SectionProps {
+interface IProps {
     header?: string;
     body?: string;
 
@@ -13,10 +13,10 @@ interface SectionProps {
     sections?: ISection[];
     list?: string[];
     link?: string;
-    opener?: SectionOpener;
+    opener?: ISectionOpener;
 }
 
-const Section: FC<SectionProps> = ({header, body, image, sections, list, link, opener}) => {
+const Section: FC<IProps> = ({header, body, image, sections, list, link, opener}) => {
     const [open, setOpen] = useState(opener ? opener.open : true);
 
     return (
@@ -33,7 +33,7 @@ const Section: FC<SectionProps> = ({header, body, image, sections, list, link, o
             {open && (
                 <div className={opener ? 'section expander-content' : 'section'}>
                     {!opener && header && <h2>{parse(header)}</h2>}
-                    {image && <img className="img-size-half" src={require('./../images/' + image.src)} />}
+                    {image && <img className="img-size-half" src={require('./../assets/' + image.src)} />}
                     {body && <div> {parse(body)}</div>}
                     {link && (
                         <div>

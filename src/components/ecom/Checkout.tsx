@@ -6,14 +6,14 @@ import {PayPalButton} from 'react-paypal-button-v2';
 import {connect} from 'react-redux';
 import {Dispatch} from 'redux';
 import {addToCart, emptyCart, removeFromCart} from '../../redux/actions/cart.action';
-import {ICartItem, ICartItemsByType, IState} from '../../typings';
+import {ICartItem, ICartItemsByType, IStore} from '../../typings';
 import {faPlusCircle, faMinusCircle} from '@fortawesome/free-solid-svg-icons';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 
 //const CURRENCY_CODE = 'USD';
 const CURRENCY_CODE = 'NZD';
 
-interface CartSummaryProps {
+interface IProps {
     addToCart: (cartItem: ICartItem, id: number) => void;
     emptyCart: () => void;
     cartItemsByType: ICartItemsByType[];
@@ -23,8 +23,8 @@ interface CartSummaryProps {
     removeFromCart: (cartItem: ICartItem) => void;
 }
 
-class Checkout extends React.Component<CartSummaryProps> {
-    constructor(props: CartSummaryProps) {
+class Checkout extends React.Component<IProps> {
+    constructor(props: IProps) {
         super(props);
     }
 
@@ -176,7 +176,7 @@ const mapDispatchToProps = (dispatch: Dispatch) => ({
 });
 
 export default connect(
-    (state: IState) => ({
+    (state: IStore) => ({
         cartItemsByType: getCartItemsByType(state.cart.items),
         cartItems: state.cart.items,
         cartTotal: state.cart.items.length > 0 ? getCartTotal(state.cart.items).toFixed(2) : 0,

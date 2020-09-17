@@ -3,16 +3,17 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {Dispatch} from 'redux';
 import {addToCart} from '../../redux/actions/cart.action';
-import {ICartItem, IShop, IState} from '../../typings';
+import {ICartItem, IProduct, IShop, IStore} from '../../typings';
 import Product from './Product';
 
-interface ShopProps extends IShop {
+interface IProps extends IShop {
     addToCart: (cartItem: ICartItem, id: number) => void;
     nextCartItemId: number;
+    products: Array<IProduct>;
 }
 
-class Shop extends React.Component<ShopProps> {
-    constructor(props: ShopProps) {
+class Shop extends React.Component<IProps> {
+    constructor(props: IProps) {
         super(props);
     }
 
@@ -46,8 +47,7 @@ const mapDispatchToProps = (dispatch: Dispatch) => ({
 });
 
 export default connect(
-    (state: IState) => ({
-        products: state.shop.products,
+    (state: IStore) => ({
         nextCartItemId: getNextCartItemId(state.cart.items)
     }),
     mapDispatchToProps

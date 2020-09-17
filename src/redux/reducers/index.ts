@@ -8,5 +8,5 @@ export default combineReducers({
     localize: localize,
     cart,
     history,
-    shop,
+    shop
 });

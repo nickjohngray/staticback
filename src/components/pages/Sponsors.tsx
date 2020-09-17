@@ -1,6 +1,6 @@
 import React from 'react';
 import ImageLinkList from './../ImageLinkList';
-import {getPage} from 'components/pages/pageUtil';
+import {getPage} from 'components/pages/manifestUtil';
 
 export default () => (
     <div className={'page center-it sponsors'}>

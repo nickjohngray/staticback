@@ -4,12 +4,12 @@ import Section from './Section';
 
 //TODO: use image path rather then hard coded path
 // when combine strings in require webpack fails to get the image!!!!!!
-interface SectionListProps {
+interface IProps {
     sections: ISection[];
     imagePath?: string;
 }
 
-const SectionList: FC<SectionListProps> = ({sections}) => renderSections(sections);
+const SectionList: FC<IProps> = ({sections}) => renderSections(sections);
 
 const renderSections = (sections: ISection[]) => (
     <>

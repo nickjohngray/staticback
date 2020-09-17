@@ -1,16 +1,16 @@
 import {Document, Page} from 'react-pdf';
 import React from 'react';
 
-interface PdfViewerState {
+interface IState {
     pages: number;
     currentPage: number;
 }
 
-interface PdfViewerProps {
+interface IProps {
     file: string;
 }
-class PdfViewer extends React.Component<PdfViewerProps, PdfViewerState> {
-    constructor(props: PdfViewerProps) {
+class PdfViewer extends React.Component<IProps, IState> {
+    constructor(props: IProps) {
         super(props);
 
         this.state = {

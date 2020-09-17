@@ -1,11 +1,11 @@
 import React, {FC} from 'react';
 
-interface ExternalLinkProps {
+interface IExternalLinkProps {
     url: string;
     text: string;
 }
 
-const ExternalLink: FC<ExternalLinkProps> = ({url, text}) => (
+const ExternalLink: FC<IExternalLinkProps> = ({url, text}) => (
     <a href={url} target="_new">
         {text}
     </a>
