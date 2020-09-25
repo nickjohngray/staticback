@@ -96,7 +96,7 @@ export interface ICartItem {
 
 export interface IProduct {
     title: string;
-    description: string;
+    description: INode[];
     image: string;
     type: string;
     variations: Variation[];

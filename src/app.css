@@ -264,8 +264,8 @@ button:disabled {
     margin-right: auto;
     display: flex;
     transform: scale(1);
-    animation-duration: 0.5s;
-    animation-name: shrinkProduct;
+    /*   animation-duration: 0.5s;
+    animation-name: shrinkProduct;*/
 }
 
 @keyframes shrinkProduct {
@@ -285,6 +285,9 @@ button:disabled {
     animation-name: inlargeProduct;
     transform: scale(3);
     cursor: pointer;
+    z-index: 10000;
+    /* NEW try keep image onm top */
+    position: absolute;
 }
 
 @keyframes inlargeProduct {
@@ -862,7 +865,7 @@ footer {
 
 img {
     animation-duration: 1s;
-    animation-name: blurImage;
+    /* animation-name: blurImage;*/
 }
 
 @keyframes blurImage {

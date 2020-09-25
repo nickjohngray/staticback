@@ -35,8 +35,15 @@ export const RTElement = props => {
             );
 
         case 'a':
+            let href: string = element.href;
+            if (href.indexOf('/') === -1) {
+                //internal links dont have / in path resource
+                // get webpack to fix this resource
+                href = require('./../../assets/' + href);
+            }
+
             return (
-                <a className={element.className} href={element.href} {...attributes}>
+                <a className={element.className} href={href} {...attributes}>
                     {children}
                 </a>
             );

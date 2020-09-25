@@ -35,6 +35,20 @@ class Product extends React.Component<IProps, IState> {
         };
     }
 
+    componentWillReceiveProps(nextProps: Readonly<IProps>) {
+        // if price changes ( through hot reload ) update the price of state so it shows the new price
+        // this is only needed as the user may change the price in the cms , and a hot relaod will occur )
+        // if this is not done the user will not see the new price until they reload the browser
+        if (nextProps.price && nextProps.price !== this.props.price) {
+            this.setState({price: nextProps.price});
+        }
+    }
+
+    //@ts-ignore
+    componentDidCatch(error: Error, errorInfo: React.ErrorInfo) {
+        window.location.reload();
+    }
+
     findVariationByTitle = (title: string): Variation => {
         return this.props.variations.find(variation => variation.title === title);
     };
@@ -97,9 +111,10 @@ class Product extends React.Component<IProps, IState> {
                             <div> {variation.title} </div>
                             <select
                                 value={
-                                    this.state.selectedVariations.find(
+                                    findVariationOptionValue(this.state.selectedVariations, variation.title)
+                                    /* this.state.selectedVariations.find(
                                         selectedVariation => selectedVariation.name === variation.title
-                                    ).option.optionValue
+                                    ).option.optionValue*/
                                 }
                                 onChange={event => {
                                     this.setVariationState(variation.title, event.target.value);
@@ -138,11 +153,22 @@ class Product extends React.Component<IProps, IState> {
                 </button>
             </div>
             <div className="product-description">
-                <RichText style={{backgroundColor: 'black'}} json={JSON.parse(this.props.description)} />
+                <RichText style={{backgroundColor: 'black'}} data={this.props.description} />
                 {/* {parse(this.props.description)}*/}
             </div>
         </div>
     );
 }
+
+const findVariationOptionValue = (variations: ISingleVariation[], name) => {
+    const variation: ISingleVariation = variations.find(variation => {
+        return variation.name === name;
+    });
+    if (!variation) {
+        // hot readlong will kill this state
+        window.location.reload();
+    }
+    return variation.option.optionValue;
+};
 
 export default Product;

@@ -9,13 +9,13 @@ import {RTLeaf} from './RTLeaf';
 import {RTElement} from './RTElement';
 
 interface IProps {
-    json: INode[];
+    data: INode[];
     style?: {};
 }
 
-const RichText = ({json, style}: IProps) => {
-    const jsonIn = json;
-    const [value, setValue] = useState<INode[]>(jsonIn);
+const RichText = ({data, style}: IProps) => {
+    const jsonIn = data;
+    const [value, setValue] = useState<INode[]>(data);
     const renderElement = useCallback(props => <RTElement {...props} />, []);
     const renderLeaf = useCallback(props => <RTLeaf {...props} />, []);
     let editor = useMemo(() => withReact(createEditor()), []);

@@ -40,7 +40,8 @@ class PdfViewer extends React.Component<IProps, IState> {
 
         return (
             <div className="center-it" style={{flexDirection: 'column', overflow: 'scroll'}}>
-                <Document file={this.props.file} onLoadSuccess={this.onDocumentLoadSuccess}>
+                <Document file={require('./../assets/' + this.props.file)} onLoadSuccess={this.onDocumentLoadSuccess}>
+                    {/* <Document file={ require( './../assets/strength_pit_otara_strongman_athletes_board_2020.pdf' )} onLoadSuccess={this.onDocumentLoadSuccess}>*/}
                     <Page pageNumber={currentPage} />
                 </Document>
 

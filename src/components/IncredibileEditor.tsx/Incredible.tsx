@@ -1,7 +1,6 @@
-import React, {useCallback, useContext, Fragment} from 'react';
+import React from 'react';
 import {getClassName, IIncredibleItem, types} from './index';
 import './Incredible.css';
-import {Node as INode} from 'slate';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {faFacebook, faGoogle, faInstagram} from '@fortawesome/free-brands-svg-icons';
 import {faPhone} from '@fortawesome/free-solid-svg-icons';
@@ -50,15 +49,10 @@ const makeContainers = (items: Array<IIncredibleItem>): any => {
 const makeComponent = (item: IIncredibleItem, reactKey: number) => {
     switch (item.type) {
         case types.pdf: {
-            const lastSlash = item.file.lastIndexOf('/');
-            if (lastSlash === -1) {
-                throw new Error("can't build pdf viewer , could not find last slash in" + item.file);
-            }
-
             return <PdfViewer key={'pff-' + reactKey} file={item.file} />;
         }
         case types.richText: {
-            return <RichText style={{backgroundColor: 'black'}} json={[item]} />;
+            return <RichText style={{backgroundColor: 'black'}} data={[item]} />;
         }
         case types.linkWithIcon: {
             return (
