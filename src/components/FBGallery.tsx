@@ -40,8 +40,7 @@ class FBGallery extends React.Component<IProps, IState> {
     getFacebookPhotos = async () => {
         try {
             const galleryId = '435429489951715';
-            const key =
-                'EAADcbfCjxXkBAK9QI5BKqrVr5ChzfJBnbnwDZBPpIXzIEqchIMmK3xYZARkqWVcHXfO0HwZB4KnK5VLIL42aZAI0c2rHSNH3yZCpEnRTBp6ZACQLT5FwESNq790s9XTCGGGsOVN5iRGyTBHozMhxeVuPGl4mOTEli5FiUV6uzoaAZDZD';
+            const key = 'USER_FB_KEY';
 
             const response = await axios.get(
                 'https://graph.facebook.com/v6.0/' +

@@ -115,7 +115,7 @@ class Checkout extends React.Component<IProps> {
                     }}
                     options={{
                         currency: CURRENCY_CODE,
-                        clientId: 'AUbLuTwiTJ_3Xc7_TDMURV4Fig2d64px6CkASW5Qg5dFjDQOgwhqt3qZy-ufzho7JAnNBp7o-7tzuAga',
+                        clientId: 'CLINET_PAYPAW',
                         debug: false
                     }}
                 />
